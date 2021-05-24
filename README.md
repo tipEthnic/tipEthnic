@@ -1,6 +1,8 @@
 # tipEthnic
 
-![tipEthnic_image](https://github.com/dhrgodms/tipEthnic/tree/main/images/readme_image.png)
+![tipEthnic_image](https://github.com/dhrgodms/tipEthnic/tree/ft2/images/readme_image.png)
+
+
 
 > COVID-19으로 인해 한국의 배달 문화는 더욱 발달하고 있습니다. 커피부터 치킨, 족발까지 안되는 배달이 없지만, 편리한만큼의 추가배달비를 지불해야 그 편리함도 누릴 수 있습니다. 
 > <br> '팁의 민족'은 사용자의 현재 위치와 판매자 간의 거리에 따른 추가배달비를 계산합니다. 거리에 따른 추가배달비를 일일이 판매자에게 문의해야 했던 기존 시스템의 문제점을 개선하는 것이 팀 '팁의 민족'의 목표입니다.
