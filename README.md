@@ -1,6 +1,6 @@
 # tipEthnic
 
-![tipEthnic_image](https://github.com/dhrgodms/tipEthnic/tree/ft2/images/readme_image.png)
+![tipEthnic_image](https://github.com/dhrgodms/tipEthnic/blob/ft2/images/readme_image.png)
 
 
 
