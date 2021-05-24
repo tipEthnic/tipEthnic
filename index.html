@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<style>
+			body
+			{
+				height: 100vh;
+				background-image: url("images/bg01.png");
+				background-repeat: no-repeat;
+				background-size: cover;
+				color: white;
+			}
+		</style>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<img srcset="images/title01.png 320w,
+					images/title01.png 480w,
+					images/title01.png 800w"
+			sizes="(max-width: 320px) 280px,
+	   				(max-width: 480px) 440px,
+					800px"
+		src="images/title01.png" alt="title-팁의민족"
+		style="display: block; margin: 0px auto 70px auto;" />
+		<link rel="stylesheet" href="assets/css/tipEthnic.css" />
+	</head>
+	<body class>
+
+		<!-- Address Form -->
+			<center>
+			가게 위치 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/gold-d.png" width="17px"/>
+				<input type="text" readonly> <button type="button" onclick="javascript:goPopup();"> 검색</button><br/>
+			배달 받을 위치 &nbsp;<img src="images/silver-d.png" width="17px"/>
+				<input type="text" readonly> <button type="button" onclick="javascript:goPopup2();"> 검색</button><br/><br/>
+
+		<!--Delivery fee Calculation-->
+		<button type="button" id="Delivery-fee-Calculation"> 추가 배달비 조회</button></br></br>
+		<div>
+			거리: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span id="distance"></span> km</br>
+		</div>
+		<div>
+		추가 배달비: &nbsp;<span id="fee"></span> 원</br>
+		</div>
+	</center>
+
+		<!-- Scripts -->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
