@@ -1,18 +1,14 @@
-// 1.서버 사용을 위해 http모듈을 http 변수에. (모듈과 변수의 이름은 달라도 된다.)
-var http = require('http'); 
-var fs = require('fs')
-// 2.http 모듈로 서버를 생성
-// 사용자로 부터 http 요청이 들어오면 function 실행
-var server = http.createServer(function(request,response){ 
+const express = require('express');
+const app = express();
 
-    fs.readFile("./index.html", null, (err,data)=>{
-        response.write(data);
-        response.end();
-    })
+app.use('/assets',express.static(__dirname + "/assets/"));
 
-});
+app.get('/',function(req, res) {
+    //__dirname 은 요청하고자 하는 파일의 경로(최상위 디렉토리~현재 디렉토리)를 단축시켜주는 절대경로 식별자
+    res.sendFile(__dirname + "/index.html");
+})
 
-// 3. listen 함수로 8080 포트를 가진 서버를 실행
-server.listen(8080, function(){ 
-    console.log('Server is running...');
-});
+
+app.listen(8080,()=>{
+    console.log("server is loading now :)");
+})
