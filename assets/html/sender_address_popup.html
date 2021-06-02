@@ -9,13 +9,14 @@
 	<body>
 		<div class="css-search">
 		<!-- Address Form -->
-			<img src="/assets/images/gold-d.png" width="17px" id="img-search"> 
+			<img src="/assets/images/gold-d.png"  id="img-search"> 
 			<form onsubmit="searchPlaces(); return false;">
-                <input type="text" id="keyword" value="제주대학교" size="60" style="width:50%">
+                <input type="text" id="keyword" value="제주대학교" >
                 <button type="submit" id="receiver_btn">검색</button>
             </form>
+		
 			<form onsubmit="now(); return false;">
-				<button type="submit" id="js-nowbtn">현재위치</button>
+				<button type="submit"  class="css-nowbtn js-nowbtn">현재위치</button>
 			</form>
 		</div>
 		<hr>

@@ -1,4 +1,4 @@
-const now_btn = document.querySelector("#js-nowbtn");
+const now_btn = document.querySelector(".js-nowbtn");
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
         center: new kakao
