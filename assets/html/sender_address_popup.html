@@ -3,13 +3,26 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="가게명">
+		<link rel="stylesheet" href="/assets/css/map.css">
 	</head>
 	<body>
-
+		<div class="css-search">
 		<!-- Address Form -->
-			&nbsp;&nbsp; <img src="/assets/images/gold-d.png" width="17px"/> &nbsp;
-			<input type="text" style="width:50%"> <button type="button"> 검색</button><br/>
-			<hr>
-
+			<img src="/assets/images/gold-d.png"  id="img-search"> 
+			<form onsubmit="searchPlaces(); return false;">
+                <input type="text" id="keyword" value="제주대학교" >
+                <button type="submit" id="receiver_btn">검색</button>
+            </form>
+		
+			<form onsubmit="now(); return false;">
+				<button type="submit"  class="css-nowbtn js-nowbtn">현재위치</button>
+			</form>
+		</div>
+		<hr>
+			<div id="map" class="sender_map"></div>
+			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d5a0cfc898b4333b701a26737da1fde7"></script>
+			<script type="text/javascript" src="/assets/js/now.js"></script>
+		
 	</body>
 </html>
