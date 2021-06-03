@@ -4,15 +4,12 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         center: new kakao
             .maps
             .LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 10 // 지도의 확대 레벨
+        level: 4 // 지도의 확대 레벨
     };
 
 var map = new kakao
     .maps
     .Map(mapContainer, mapOption); // 지도를 생성합니다
-
-
-
 
 function now() {
     if (navigator.geolocation) {
@@ -27,10 +24,12 @@ function now() {
                 var locPosition = new kakao
                         .maps
                         .LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                    message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
+                    message = '<div style="padding:5px;">현재 위치</div>'; // 인포윈도우에 표시될 내용입니다
 
+                console.log(locPosition);
                 // 마커와 인포윈도우를 표시합니다
                 displayMarker(locPosition, message);
+
             });
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
         var locPosition = new kakao
@@ -41,8 +40,6 @@ function now() {
         displayMarker(locPosition, message);
     }
 }
-
-
 
 // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 지도에 마커와 인포윈도우를 표시하는 함수입니다
 function displayMarker(locPosition, message) {
