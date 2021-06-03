@@ -33,11 +33,12 @@ function searchPlaces() {
     }
     // 키워드로 장소를 검색합니다
     ps.keywordSearch(keyword, placesSearchCB);
+    // console.log(ps);
 }
 
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
-    if (status === kakao.maps.services.Status.OK) {
+    // if (status === kakao.maps.services.Status.OK) {
 
         // // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해 LatLngBounds 객체에 좌표를 추가합니다
         // var bounds = new kakao
@@ -54,13 +55,15 @@ function placesSearchCB(data, status, pagination) {
 
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         // map.setBounds(bounds);
-    }
+    // }
 }
 
 
 function displayList(place){
 
     const placeInfo = document.querySelector(".js-placewrapper");
+    const mapwrapper = document.createElement("div");
+    const btnwrapper = document.createElement('div');
     const divwrapper = document.createElement("div");
     divwrapper.className = "css-placeInfo"
     const newdiv = document.createElement("div");
@@ -76,8 +79,11 @@ function displayList(place){
 
     newdiv.innerHTML = '<span id="place_name">'+place.place_name + '</span>' + '<span id="address">'+place.road_address_name+'</span>';
     divwrapper.appendChild(newdiv);
-    divwrapper.appendChild(mapBtn);
-    divwrapper.appendChild(selectBtn);
+    btnwrapper.appendChild(mapBtn);
+    btnwrapper.appendChild(selectBtn);
+    divwrapper.appendChild(btnwrapper);
+    // mapwrapper.appendChild(mapContainer)
+    divwrapper.appendChild(mapwrapper);
     placeInfo.appendChild(divwrapper);
     
 }
