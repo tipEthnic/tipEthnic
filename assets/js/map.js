@@ -16,6 +16,7 @@ var map = new kakao
     .maps
     .Map(mapContainer, mapOption);
 
+
 // 장소 검색 객체를 생성합니다
 var ps = new kakao
     .maps
@@ -36,30 +37,75 @@ function searchPlaces() {
     // console.log(ps);
 }
 
+let place;
+let btns = [];
+let num = 0;
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
-    // if (status === kakao.maps.services.Status.OK) {
+    // 장소 검색이 완료되었다면
+    if (status === kakao.maps.services.Status.OK) {
 
-        // // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해 LatLngBounds 객체에 좌표를 추가합니다
-        // var bounds = new kakao
-        //     .maps
-        //     .LatLngBounds();
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해 LatLngBounds 객체에 좌표를 추가합니다
+        var bounds = new kakao
+            .maps
+            .LatLngBounds();
 
-        
+        // console.log(data);
         for (var i = 0; i < data.length; i++) {
-            console.log(data[i].place_name);
-            displayList(data[i]);
+            // console.log(data[i]);
+            place = data[i];
+            place.num = i;
+            // console.log(place);
+            displayList(place);
             // displayMarker(data[i]);
-            // bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
 
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-        // map.setBounds(bounds);
-    // }
+        //검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+        map.setBounds(bounds);
+
+
+
+        // document.addEventListner('click',function(event){
+        //     if(event.target.className === "js-mapBtn"){
+
+        //     }
+
+
+        // })
+        console.log(btns[1].parentNode.parentNode);
+        console.log(data[1]);
+        console.log(btns);
+    }
+}
+
+/* 버튼 ------------------------------- */
+// 인덱스 값을 가져와라.
+
+function btn_click(idx){
+    btns[idx].onclick = function() {
+        console.log(idx);
+    }
 }
 
 
-function displayList(place){
+
+// document.addEventListener('click',function(event){
+//     if(event.target.className === "js-mapBtn"){
+//         const btn  = event.target;
+//         console.log(index);
+//         // const li = btn.parentNode.parentNode    ;
+//         // console.log(li);
+//         console.log(place);
+//     } else if (event.target.className === "js-selectBtn"){
+//         console.log(event.target);
+//     }
+// });
+
+/* 버튼 ------------------------------- */
+
+
+function displayList(place) {
 
     const placeInfo = document.querySelector(".js-placewrapper");
     const mapwrapper = document.createElement("div");
@@ -67,25 +113,27 @@ function displayList(place){
     const divwrapper = document.createElement("div");
     divwrapper.className = "css-placeInfo"
     const newdiv = document.createElement("div");
-    newdiv.className = "css-place"; 
+    newdiv.className = "css-place";
     const mapBtn = document.createElement("button");
     mapBtn.className = "js-mapBtn";
+    btns.push(mapBtn);
     const selectBtn = document.createElement("button");
     selectBtn.className = "js-selectBtn";
     // const span = document.createElement("span");
     mapBtn.innerHTML = "지도";
     selectBtn.innerHTML = "선택";
-    
 
-    newdiv.innerHTML = '<span id="place_name">'+place.place_name + '</span>' + '<span id="address">'+place.road_address_name+'</span>';
+    newdiv.innerHTML = '<span id="place_name">' + place.place_name + '</span><span ' +
+            'id="address">' + place.road_address_name + '</span>';
     divwrapper.appendChild(newdiv);
-    btnwrapper.appendChild(mapBtn);
+    btnwrapper.appendChild(btns[num]);
+    num += 1;
     btnwrapper.appendChild(selectBtn);
     divwrapper.appendChild(btnwrapper);
     // mapwrapper.appendChild(mapContainer)
     divwrapper.appendChild(mapwrapper);
     placeInfo.appendChild(divwrapper);
-    
+
 }
 
 // 지도에 마커를 표시하는 함수입니다
@@ -116,17 +164,12 @@ function displayMarker(place) {
 
 const select = document.querySelector(".js-selectBtn");
 
-function MovePlaceInfo(){
+function MovePlaceInfo() {}
 
-    
+function selectPlace() {
+
+    selectBtn.addEventListner("click", MovePlaceInfo, flase);
+
 }
 
-function selectPlace(){
-
-    selectBtn.addEventListner("click",MovePlaceInfo,flase);
-
-    
-}
-
-// 선택 버튼 눌렀을 때 > 해당 place 정보 index.html 페이지로.
-// 지도 버튼 누르면 > 지도 표시 > 해당 위치 마크 표시
+// 선택 버튼 눌렀을 때 > 해당 place 정보 index.html 페이지로. 지도 버튼 누르면 > 지도 표시 > 해당 위치 마크 표시
