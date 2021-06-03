@@ -16,7 +16,6 @@ var map = new kakao
     .maps
     .Map(mapContainer, mapOption);
 
-
 // 장소 검색 객체를 생성합니다
 var ps = new kakao
     .maps
@@ -57,56 +56,46 @@ function placesSearchCB(data, status, pagination) {
             place.num = i;
             // console.log(place);
             displayList(place);
+            a ++ ;
             // displayMarker(data[i]);
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
 
         //검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
-
-
-
-        // document.addEventListner('click',function(event){
-        //     if(event.target.className === "js-mapBtn"){
-
-        //     }
-
-
-        // })
-        console.log(btns[1].parentNode.parentNode);
-        console.log(data[1]);
-        console.log(btns);
+        
+        // console.log();
     }
 }
 
-/* 버튼 ------------------------------- */
+/* 버튼 ------------------------------- */                                                                                                          
 // 인덱스 값을 가져와라.
 
-function btn_click(idx){
-    btns[idx].onclick = function() {
-        console.log(idx);
+// function btn_click(idx) {
+    // btns[idx].onclick = function () {
+        // console.log(this);
+    // }
+// }
+
+
+
+document.addEventListener('click', function (event) {
+    if (event.target.className === "js-mapBtn") {
+        const btn = event.target;
+        console.log(btn);
+
+        console.log(place);
+    } else if (event.target.className === "js-selectBtn") {
+        console.log(event.target);
     }
-}
-
-
-
-// document.addEventListener('click',function(event){
-//     if(event.target.className === "js-mapBtn"){
-//         const btn  = event.target;
-//         console.log(index);
-//         // const li = btn.parentNode.parentNode    ;
-//         // console.log(li);
-//         console.log(place);
-//     } else if (event.target.className === "js-selectBtn"){
-//         console.log(event.target);
-//     }
-// });
+});
 
 /* 버튼 ------------------------------- */
 
-
+let a=0;
 function displayList(place) {
 
+    
     const placeInfo = document.querySelector(".js-placewrapper");
     const mapwrapper = document.createElement("div");
     const btnwrapper = document.createElement('div');
@@ -116,12 +105,16 @@ function displayList(place) {
     newdiv.className = "css-place";
     const mapBtn = document.createElement("button");
     mapBtn.className = "js-mapBtn";
+    mapBtn.value = a;
     btns.push(mapBtn);
     const selectBtn = document.createElement("button");
     selectBtn.className = "js-selectBtn";
+    selectBtn.value = a ; 
     // const span = document.createElement("span");
     mapBtn.innerHTML = "지도";
     selectBtn.innerHTML = "선택";
+
+   
 
     newdiv.innerHTML = '<span id="place_name">' + place.place_name + '</span><span ' +
             'id="address">' + place.road_address_name + '</span>';
@@ -133,6 +126,7 @@ function displayList(place) {
     // mapwrapper.appendChild(mapContainer)
     divwrapper.appendChild(mapwrapper);
     placeInfo.appendChild(divwrapper);
+
 
 }
 
