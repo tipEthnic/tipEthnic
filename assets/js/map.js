@@ -37,6 +37,7 @@ function searchPlaces() {
 }
 
 let place;
+let place_data;
 let btns = [];
 let num = 0;
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
@@ -53,7 +54,7 @@ function placesSearchCB(data, status, pagination) {
         for (var i = 0; i < data.length; i++) {
             // console.log(data[i]);
             place = data[i];
-            place.num = i;
+            
             // console.log(place);
             displayList(place);
             a ++ ;
@@ -64,29 +65,22 @@ function placesSearchCB(data, status, pagination) {
         //검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
         
-        // console.log();
+        place_data = data;
+        console.log(place_data);
     }
 }
-
-/* 버튼 ------------------------------- */                                                                                                          
-// 인덱스 값을 가져와라.
-
-// function btn_click(idx) {
-    // btns[idx].onclick = function () {
-        // console.log(this);
-    // }
-// }
-
 
 
 document.addEventListener('click', function (event) {
     if (event.target.className === "js-mapBtn") {
-        const btn = event.target;
-        console.log(btn);
+        const Mbtn = event.target.value;
+        console.log(Mbtn);
 
-        console.log(place);
+        // console.log(place);
     } else if (event.target.className === "js-selectBtn") {
-        console.log(event.target);
+        const Sbtn = event.target.value;
+
+        console.log(place_data[Sbtn]); 
     }
 });
 
@@ -95,7 +89,6 @@ document.addEventListener('click', function (event) {
 let a=0;
 function displayList(place) {
 
-    
     const placeInfo = document.querySelector(".js-placewrapper");
     const mapwrapper = document.createElement("div");
     const btnwrapper = document.createElement('div');
