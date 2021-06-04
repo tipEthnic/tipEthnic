@@ -11,6 +11,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         level: 3 // 지도의 확대 레벨
     };
 
+mapContainer.style.display = "none";
 // 지도를 생성합니다
 var map = new kakao
     .maps
@@ -38,7 +39,6 @@ function searchPlaces() {
 
 let place;
 let place_data;
-let btns = [];
 let num = 0;
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
@@ -54,72 +54,106 @@ function placesSearchCB(data, status, pagination) {
         for (var i = 0; i < data.length; i++) {
             // console.log(data[i]);
             place = data[i];
-            
+
             // console.log(place);
             displayList(place);
-            a ++ ;
+            a++;
             // displayMarker(data[i]);
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
 
         //검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
-        
+
         place_data = data;
         console.log(place_data);
     }
 }
 
+/* 지도 display = none -> block으로 바꾸기.
+function showMap () {
+    if(mapContainer.style.disply == "none") {
+        mapContainer.style.display = "block";
+      }else {
+          mapContainer.style.display = "none";
+      }
+}
+*/
 
 document.addEventListener('click', function (event) {
     if (event.target.className === "js-mapBtn") {
-        const Mbtn = event.target.value;
+        const Mbtn = event.target;
+        const Mbtn_num = Mbtn.value;
+
+        console.log(Mbtn.parentNode);
         console.log(Mbtn);
 
-        // console.log(place);
+        // console.log(Mbtn.parentNode.parentNode);
+        // Mbtn.parentNode.parentNode.appendChild(newdiv); console.log(place);
     } else if (event.target.className === "js-selectBtn") {
-        const Sbtn = event.target.value;
+        const Sbtn = event.target;
+        const Sbtn_num = Sbtn.value;
 
-        console.log(place_data[Sbtn]); 
+        localStorage.setItem('sender_name', place_data[Sbtn_num].place_name);
+        localStorage.setItem('sender_address', place_data[Sbtn_num].address_name);
+        localStorage.setItem(
+            'sender_road_address',
+            place_data[Sbtn_num].road_address_name
+        );
+        localStorage.setItem('sender_latitude_y', place_data[Sbtn_num].y); //위도
+        localStorage.setItem('sender_longitude_x', place_data[Sbtn_num].x); // 경도
+
+        setTimeout(function () {
+
+            sender_place = localStorage.getItem("sender_name");
+            window
+                .opener
+                .document
+                .querySelector("#sender")
+                .value = sender_place;
+            // console.log(window.opener.document.querySelector("#sender").value);
+            window.close();
+        }, 100);
     }
 });
 
 /* 버튼 ------------------------------- */
 
-let a=0;
+let a = 0;
 function displayList(place) {
 
-    const placeInfo = document.querySelector(".js-placewrapper");
-    const mapwrapper = document.createElement("div");
-    const btnwrapper = document.createElement('div');
+    const places = document.querySelector(".js-placewrapper");
     const divwrapper = document.createElement("div");
     divwrapper.className = "css-placeInfo"
+    const Infowrapper = document.createElement("div");
     const newdiv = document.createElement("div");
     newdiv.className = "css-place";
+
+    const btnwrapper = document.createElement('div');
     const mapBtn = document.createElement("button");
     mapBtn.className = "js-mapBtn";
     mapBtn.value = a;
-    btns.push(mapBtn);
+    // btns.push(mapBtn);
     const selectBtn = document.createElement("button");
     selectBtn.className = "js-selectBtn";
-    selectBtn.value = a ; 
+    selectBtn.value = a;
     // const span = document.createElement("span");
     mapBtn.innerHTML = "지도";
     selectBtn.innerHTML = "선택";
 
-   
+    const mapwrapper = document.createElement("div");
+    mapwrapper.id = "map";
+    mapwrapper.class = "map";
 
     newdiv.innerHTML = '<span id="place_name">' + place.place_name + '</span><span ' +
             'id="address">' + place.road_address_name + '</span>';
-    divwrapper.appendChild(newdiv);
-    btnwrapper.appendChild(btns[num]);
-    num += 1;
+    btnwrapper.appendChild(mapBtn);
     btnwrapper.appendChild(selectBtn);
-    divwrapper.appendChild(btnwrapper);
-    // mapwrapper.appendChild(mapContainer)
+    Infowrapper.appendChild(newdiv);
+    Infowrapper.appendChild(btnwrapper);
+    divwrapper.appendChild(Infowrapper);
     divwrapper.appendChild(mapwrapper);
-    placeInfo.appendChild(divwrapper);
-
+    places.appendChild(divwrapper);
 
 }
 
@@ -147,15 +181,6 @@ function displayMarker(place) {
             );
             infowindow.open(map, marker);
         });
-}
-
-const select = document.querySelector(".js-selectBtn");
-
-function MovePlaceInfo() {}
-
-function selectPlace() {
-
-    selectBtn.addEventListner("click", MovePlaceInfo, flase);
 
 }
 
