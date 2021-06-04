@@ -6,8 +6,10 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
         center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 7 // 지도의 확대 레벨
+        level: 3 // 지도의 확대 레벨
     };
+
+
 
 function toggle() {
     var display = document.getElementById('map').style.display;
@@ -18,19 +20,12 @@ function toggle() {
     }
 }
 
-
 // 지도를 생성합니다
-var map = new kakao
-    .maps
-    .Map(mapContainer, mapOption);
-
-    toggle();  //map -> display :  none으로 지정.
+var map = new kakao.maps.Map(mapContainer, mapOption);
+toggle();  //map -> display :  none으로 지정.
 
 // 장소 검색 객체를 생성합니다
-var ps = new kakao
-    .maps
-    .services
-    .Places();
+var ps = new kakao.maps.services.Places();
 
 function searchPlaces() {
     var keyword = document
@@ -48,16 +43,14 @@ function searchPlaces() {
 
 let place;
 let place_data;
-let num = 0;
+
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
     // 장소 검색이 완료되었다면
     if (status === kakao.maps.services.Status.OK) {
 
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해 LatLngBounds 객체에 좌표를 추가합니다
-        var bounds = new kakao
-            .maps
-            .LatLngBounds();
+        var bounds = new kakao.maps.LatLngBounds();
 
         // console.log(data);
         for (var i = 0; i < data.length; i++) {
@@ -70,11 +63,11 @@ function placesSearchCB(data, status, pagination) {
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
 
+        toggle();
         //검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
 
         place_data = data;
-       
         console.log(place_data);
     }
 }
@@ -92,7 +85,7 @@ document.addEventListener('click', function (event) {
 
         map.setBounds(bounds);
         
-        toggle();
+      
         // document.getElementById('map').style.display = "block";
         // console.log(Mbtn.parentNode);
         // console.log(Mbtn);
@@ -148,9 +141,6 @@ function displayList(place) {
     mapBtn.innerHTML = "지도";
     selectBtn.innerHTML = "선택";
 
-    const mapwrapper = document.createElement("div");
-    mapwrapper.id = "map";
-    mapwrapper.class = "map";
 
     newdiv.innerHTML = '<span id="place_name">' + place.place_name + '</span><span ' +
             'id="address">' + place.road_address_name + '</span>';
@@ -159,7 +149,6 @@ function displayList(place) {
     Infowrapper.appendChild(newdiv);
     Infowrapper.appendChild(btnwrapper);
     divwrapper.appendChild(Infowrapper);
-    divwrapper.appendChild(mapwrapper);
     places.appendChild(divwrapper);
 
 }

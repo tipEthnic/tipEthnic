@@ -22,14 +22,13 @@ body {
 }
 
 .css-nowbtn {
-
     margin-left: 0.5em;
 
 }
 
 .css-placeInfo {
     border: 1px solid #dcdde1;
-    width: 90vw;
+    width: 40vw;
     /* 위 | 오른쪽 | 아래 | 왼쪽 */
     padding: 10px 0 10px 10px;
 }
@@ -38,9 +37,14 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.mainwrapper {
+    display: flex;
+}
+
 .map {
-    width: 100%;
-    height: 350px;
+    width: 60%;
+    height: 70vw;
 }
 
 .map_wrap,
@@ -56,6 +60,7 @@ body {
     color: #000;
     text-decoration: none;
 }
+
 .map_wrap {
     position: relative;
     width: 100%;

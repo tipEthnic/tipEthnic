@@ -19,21 +19,21 @@
                 <button type="submit" id="receiver_btn">검색</button>
             </form>
 
-            <form onsubmit="now(); return false;">
+            <!-- <form onsubmit="now(); return false;">
                 <button type="submit" class="css-nowbtn js-nowbtn">현재위치</button>
-            </form>
+            </form> -->
         </div>
         <hr>
-        <div class="css-info">
-            <div id="map" class="receiver_map"></div>
-            <div>
-                <button type="submit">선택</button>
-            </div>
-        </div>
+        
+        <div id="map" class= "map" style="display: block;" ></div> 
+        <div class="js-placewrapper css-placewrapper"></div>
+        <div id="result"></div>
+
         <script
             type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d5a0cfc898b4333b701a26737da1fde7"></script>
-        <script type="text/javascript" src="/assets/js/now.js"></script>
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d5a0cfc898b4333b701a26737da1fde7&libraries=services"></script>
+            <script type="text/javascript" src="/assets/js/map.js"></script>
+            <!-- <script type="text/javascript" src="/assets/js/now.js"></script> -->
 
     </body>
 </html>
