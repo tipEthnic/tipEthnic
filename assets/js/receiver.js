@@ -93,20 +93,19 @@ document.addEventListener('click', function (event) {
         const Sbtn = event.target;
         const Sbtn_num = Sbtn.value;
 
-        localStorage.setItem('sender_name', place_data[Sbtn_num].place_name);
-        localStorage.setItem('sender_address', place_data[Sbtn_num].address_name);
+        
+        localStorage.setItem('receiver_name', place_data[Sbtn_num].place_name);
+        localStorage.setItem('receiver_address', place_data[Sbtn_num].address_name);
         localStorage.setItem(
-            'sender_road_address',
+            'receiver_road_address',
             place_data[Sbtn_num].road_address_name
         );
-        localStorage.setItem('sender_latitude_y', place_data[Sbtn_num].y); //위도
-        localStorage.setItem('sender_longitude_x', place_data[Sbtn_num].x); // 경도
+        localStorage.setItem('receiver_latitude_y', place_data[Sbtn_num].y); //위도
+        localStorage.setItem('receiver_longitude_x', place_data[Sbtn_num].x); // 경도
 
         setTimeout(function () {
-
-            sender_place = localStorage.getItem("sender_name");
-            window.opener.document.querySelector("#sender").value = sender_place;
-            // console.log(window.opener.document.querySelector("#sender").value);
+            receiver_place = localStorage.getItem("receiver_name");
+            window.opener.document.querySelector("#receiver").value = receiver_place;
             window.close();
         }, 1000);
     }
