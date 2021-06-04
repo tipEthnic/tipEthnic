@@ -11,7 +11,15 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         level: 3 // 지도의 확대 레벨
     };
 
-mapContainer.style.display = "none";
+function toggle() {
+    var display = document.getElementById('map').style.display;
+    if (display === 'block') { // on -> off
+        document.getElementById('map').style.display = "none";
+    } else { // off -> on
+        document.getElementById('map').style.display = "block";
+    }
+}
+
 // 지도를 생성합니다
 var map = new kakao
     .maps
@@ -84,7 +92,7 @@ document.addEventListener('click', function (event) {
     if (event.target.className === "js-mapBtn") {
         const Mbtn = event.target;
         const Mbtn_num = Mbtn.value;
-
+        toggle();
         console.log(Mbtn.parentNode);
         console.log(Mbtn);
 
