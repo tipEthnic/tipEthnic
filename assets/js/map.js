@@ -10,7 +10,6 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     };
 
 
-
 function toggle() {
     var display = document.getElementById('map').style.display;
     if (display === 'block') { // on -> off
@@ -19,6 +18,7 @@ function toggle() {
         document.getElementById('map').style.display = "block";
     }
 }
+
 
 // 지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption);
@@ -62,7 +62,6 @@ function placesSearchCB(data, status, pagination) {
             a++;
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
-
         toggle();
         //검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
@@ -84,8 +83,7 @@ document.addEventListener('click', function (event) {
         bounds.extend(new kakao.maps.LatLng(place_data[Mbtn_num].y,place_data[Mbtn_num].x ));
 
         map.setBounds(bounds);
-        
-      
+
         // document.getElementById('map').style.display = "block";
         // console.log(Mbtn.parentNode);
         // console.log(Mbtn);
@@ -107,11 +105,7 @@ document.addEventListener('click', function (event) {
         setTimeout(function () {
 
             sender_place = localStorage.getItem("sender_name");
-            window
-                .opener
-                .document
-                .querySelector("#sender")
-                .value = sender_place;
+            window.opener.document.querySelector("#sender").value = sender_place;
             // console.log(window.opener.document.querySelector("#sender").value);
             window.close();
         }, 1000);
