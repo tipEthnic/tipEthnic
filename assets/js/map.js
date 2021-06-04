@@ -1,14 +1,12 @@
-// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-var infowindow = new kakao
-    .maps
-    .InfoWindow({zIndex: 1});
+// // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+// var infowindow = new kakao
+//     .maps
+//     .InfoWindow({zIndex: 1});
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
-        center: new kakao
-            .maps
-            .LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+        level: 7 // 지도의 확대 레벨
     };
 
 function toggle() {
@@ -20,10 +18,13 @@ function toggle() {
     }
 }
 
+
 // 지도를 생성합니다
 var map = new kakao
     .maps
     .Map(mapContainer, mapOption);
+
+    toggle();  //map -> display :  none으로 지정.
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao
@@ -66,7 +67,6 @@ function placesSearchCB(data, status, pagination) {
             // console.log(place);
             displayList(place);
             a++;
-            // displayMarker(data[i]);
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
 
@@ -74,30 +74,30 @@ function placesSearchCB(data, status, pagination) {
         map.setBounds(bounds);
 
         place_data = data;
+       
         console.log(place_data);
     }
 }
 
-/* 지도 display = none -> block으로 바꾸기.
-function showMap () {
-    if(mapContainer.style.disply == "none") {
-        mapContainer.style.display = "block";
-      }else {
-          mapContainer.style.display = "none";
-      }
-}
-*/
+
 
 document.addEventListener('click', function (event) {
     if (event.target.className === "js-mapBtn") {
         const Mbtn = event.target;
         const Mbtn_num = Mbtn.value;
-        toggle();
-        console.log(Mbtn.parentNode);
-        console.log(Mbtn);
 
-        // console.log(Mbtn.parentNode.parentNode);
-        // Mbtn.parentNode.parentNode.appendChild(newdiv); console.log(place);
+        var bounds = new kakao.maps.LatLngBounds();
+        displayMarker(place_data[Mbtn_num],place_data[Mbtn_num].y,place_data[Mbtn_num].x );
+        bounds.extend(new kakao.maps.LatLng(place_data[Mbtn_num].y,place_data[Mbtn_num].x ));
+
+        map.setBounds(bounds);
+        
+        toggle();
+        // document.getElementById('map').style.display = "block";
+        // console.log(Mbtn.parentNode);
+        // console.log(Mbtn);
+
+    
     } else if (event.target.className === "js-selectBtn") {
         const Sbtn = event.target;
         const Sbtn_num = Sbtn.value;
@@ -121,7 +121,7 @@ document.addEventListener('click', function (event) {
                 .value = sender_place;
             // console.log(window.opener.document.querySelector("#sender").value);
             window.close();
-        }, 100);
+        }, 1000);
     }
 });
 
@@ -129,7 +129,6 @@ document.addEventListener('click', function (event) {
 
 let a = 0;
 function displayList(place) {
-
     const places = document.querySelector(".js-placewrapper");
     const divwrapper = document.createElement("div");
     divwrapper.className = "css-placeInfo"
@@ -166,29 +165,21 @@ function displayList(place) {
 }
 
 // 지도에 마커를 표시하는 함수입니다
-function displayMarker(place) {
-
+function displayMarker(place,y,x) {
     // 마커를 생성하고 지도에 표시합니다
-    var marker = new kakao
-        .maps
-        .Marker({
+    var marker = new kakao.maps.Marker({
             map: map,
-            position: new kakao
-                .maps
-                .LatLng(place.y, place.x)
+            position: new kakao.maps.LatLng(y,x),
         });
 
     // 마커에 클릭이벤트를 등록합니다
-    kakao
-        .maps
-        .event
-        .addListener(marker, 'click', function () {
-            // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-            infowindow.setContent(
-                '<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>'
-            );
-            infowindow.open(map, marker);
-        });
+    // kakao.maps.event.addListener(marker, 'click', function () {
+    //         // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+    //         infowindow.setContent(
+    //             '<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>'
+    //         );
+    //         infowindow.open(map, marker);
+    //     });
 
 }
 
