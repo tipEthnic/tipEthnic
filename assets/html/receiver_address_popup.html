@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=no"/>
+        <meta name="description" content="배달 받을 장소.">
+        <link rel="stylesheet" href="/assets/css/map.css">
+
+    </head>
+    <body>
+
+        <div class="css-search">
+            <!-- Address Form -->
+            <img src="/assets/images/gold-d.png" id="img-search">
+            <form onsubmit="searchPlaces(); return false;">
+                <input type="text" id="keyword" value="제주대학교">
+                <button type="submit" id="receiver_btn">검색</button>
+            </form>
+
+            <!-- <form onsubmit="now(); return false;">
+                <button type="submit" class="css-nowbtn js-nowbtn">현재위치</button>
+            </form> -->
+        </div>
+        <hr>
+        
+        <div class="mainwrapper">
+            <div class="js-placewrapper css-placewrapper"></div>
+            <div id="map" class="map" style="display: block;"></div>
+        </div>
+        <div id="result"></div>
+
+        <script
+            type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d5a0cfc898b4333b701a26737da1fde7&libraries=services"></script>
+            <script type="text/javascript" src="/assets/js/receiver.js"></script>
+            <!-- <script type="text/javascript" src="/assets/js/now.js"></script> -->
+
+    </body>
+</html>
