@@ -18,6 +18,15 @@
   },
   "homepage": "https://github.com/dhflxhdxhd/tipEthnic#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "axios": "^0.21.1",
+    "browserify": "^17.0.0",
+    "cheerio": "^1.0.0-rc.9",
+    "express": "^4.17.1",
+    "node-libcurl": "^2.3.3",
+    "request": "^2.88.2",
+    "uniq": "^1.0.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.7.2"
   }
 }

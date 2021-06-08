@@ -11,15 +11,11 @@ function goPopup2() {
 				"width=800, height=500, left=100, top=50");
 }
 
+
 const btn = document.getElementById("Delivery-fee-Calculation");
-const Distance = document.getElementById("distance");
-const Fee = document.getElementById("fee");
 
-// 거리 및 가격 계산
-let dist = 13;
-let fe = 7000;
 
+//console.log(send_trans_lon);
 btn.addEventListener('click', function() {
-	Distance.innerHTML = dist;
-	Fee.innerHTML = fe;
+	
 });
