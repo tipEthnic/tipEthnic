@@ -39,7 +39,9 @@
             배달 받을 위치 &nbsp;<img src="/assets/images/silver-d.png" width="17px"/>
             <input type="text" id="receiver" readonly="readonly">
             <button type="button" onclick="javascript:goPopup2();">
-                검색</button><br/>
+                검색</button>
+            <!-- <button type="button" class="nowBtn">현재위치</button>     -->
+                <br/>
             <br>
 
                 <!--Delivery fee Calculation-->
@@ -77,6 +79,9 @@
 
 <!-- Scripts -->
 <script src="/assets/js/main.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d5a0cfc898b4333b701a26737da1fde7&libraries=services"></script>
+<script src="/assets/js/now.js"></script>
+
 <script src="/assets/js/disCal.js"></script>
 <script
             type="text/javascript"
