@@ -57,6 +57,8 @@ function placesSearchCB(data, status, pagination) {
     // 장소 검색이 완료되었다면
     if (status === kakao.maps.services.Status.OK) {
 
+        a=0
+        
         removeAllChildNods(places);
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해 LatLngBounds 객체에 좌표를 추가합니다
         var bounds = new kakao.maps.LatLngBounds();
