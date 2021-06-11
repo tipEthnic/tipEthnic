@@ -27,18 +27,22 @@ toggle();  //map -> display :  none으로 지정.
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places();
 
+let status = 0;
 function searchPlaces() {
-    var keyword = document
-        .getElementById('keyword')
-        .value;
-
+    status++;
+    var keyword = document.getElementById('keyword').value;
+ 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
         alert('키워드를 입력해주세요!');
         return false;
     }
+
+    if(status === 1 ){
+        ps.keywordSearch(keyword, placesSearchCB);
+        status = 0;
+    }
     // 키워드로 장소를 검색합니다
-    ps.keywordSearch(keyword, placesSearchCB);
-    // console.log(ps);
+   
 }
 
 let place;
@@ -57,19 +61,25 @@ function placesSearchCB(data, status, pagination) {
             // console.log(data[i]);
             place = data[i];
 
-            // console.log(place);
             displayList(place);
             a++;
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
+        // displayPagination(pagination); // 페이지 번호 표출
+        
         toggle();
         //검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
 
-        place_data = data;
-        console.log(place_data);
+        place_data = data;  
     }
 }
+
+/*------------------페이지 번호 추가 --------------*/
+function displayPagination(pagination){
+    let fragment = document.createDocumentFragment();
+}
+/*------------------페이지 번호 추가 --------------*/
 
 
 
@@ -107,7 +117,7 @@ document.addEventListener('click', function (event) {
             receiver_place = localStorage.getItem("receiver_name");
             window.opener.document.querySelector("#receiver").value = receiver_place;
             window.close();
-        }, 1000);
+        }, 500);
     }
 });
 
