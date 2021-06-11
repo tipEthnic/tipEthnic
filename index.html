@@ -44,8 +44,13 @@
             <input type="text" id="receiver" readonly="readonly">
             <button type="button" onclick="javascript:goPopup2();">
                 검색</button>
+<<<<<<< HEAD
             <button type="button" onclick="">
                 현위치로</button><br/>
+=======
+            <!-- <button type="button" class="nowBtn">현재위치</button>     -->
+                <br/>
+>>>>>>> b8fb1660df0d0b42f0f90c519185b1146dc67aa3
             <br>
 
                 <!--Delivery fee Calculation-->
@@ -53,6 +58,17 @@
                     추가 배달비 조회</button>
             </br>
         </br>
+
+        <div>
+            거리: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span id="distance"></span>
+            km</br>
+    </div>
+    <div>
+        추가 배달비: &nnbsp;<span id="fee"></span>
+        원</br>
+</div>
+
         <div id="result"></div>
 		<br>
 		<div class="ft_area">
@@ -67,12 +83,19 @@
 		<div class="map_act_btn_wrap clear_box"></div>
 
 		<br />
+<<<<<<< HEAD
 
 
+=======
+ 
+>>>>>>> b8fb1660df0d0b42f0f90c519185b1146dc67aa3
 </center>
 
 <!-- Scripts -->
 <script src="/assets/js/main.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d5a0cfc898b4333b701a26737da1fde7&libraries=services"></script>
+<script src="/assets/js/now.js"></script>
+
 <script src="/assets/js/disCal.js"></script>
 <script
             type="text/javascript"
