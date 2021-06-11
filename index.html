@@ -16,30 +16,36 @@
             content="width=device-width, initial-scale=1, user-scalable=no"/>
         <img
             srcset="/assets/images/title01.png 320w,
-		/assets/images/title01.png 480w,
-		/assets/images/title01.png 800w"
+		                /assets/images/title01.png 480w,
+		                /assets/images/title01.png 800w"
             sizes="(max-width: 320px) 280px,
-	   				(max-width: 480px) 440px,
-					800px"
+	   				       (max-width: 480px) 440px,
+					                            800px"
             src="/assets/images/title01.png"
             alt="title-팁의민족"
-            style="display: block; margin: 0px auto 70px auto;"/>
+            style="display: block; margin: 0px auto 0px auto;/" />
         <link rel="stylesheet" href="/assets/css/tipEthnic.css"/>
     </head>
-    
+
 	<body onload="default_map();">
 
         <!-- Address Form -->
         <center>
-            가게 위치 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <br>
+          <a>이 사이트는 배달 거리가 2km 이상일 때, 100m당 100원을 추가 배달비로 산정합니다.</a><br>
+            가게 위치 &nbsp;
             <img src="/assets/images/gold-d.png" width="17px"/>
             <input type="text" id="sender" readonly="readonly">
             <button type="button" onclick="javascript:goPopup();">
                 검색</button><br/>
-            배달 받을 위치 &nbsp;<img src="/assets/images/silver-d.png" width="17px"/>
+            배달 받을 위치
+            &nbsp;
+            <img src="/assets/images/silver-d.png" width="17px"/>
             <input type="text" id="receiver" readonly="readonly">
             <button type="button" onclick="javascript:goPopup2();">
-                검색</button><br/>
+                검색</button>
+            <button type="button" onclick="">
+                현위치로</button><br/>
             <br>
 
                 <!--Delivery fee Calculation-->
@@ -54,14 +60,14 @@
 			<div class="map_act_btn_wrap clear_box"></div>
 			<div class="clear"></div>
 		</div>
-	
+
 		<div id="map_wrap" class="map_wrap">
 			<div id="map_div"></div>
 		</div>
 		<div class="map_act_btn_wrap clear_box"></div>
 
 		<br />
-        
+
 
 </center>
 
