@@ -180,11 +180,30 @@ function displayList(place) {
 }
 
 
+/* 지도 WTM좌표-> WGS84좌표로 변환------*/
+var geocoder = new kakao.maps.services.Geocoder(), // 좌표계 변환 객체를 생성합니다
+    wtmX = localStorage.getItem("receiver_longitude_x"), // 변환할 WTM X 좌표 입니다
+    wtmY = localStorage.getItem("receiver_latitude_y"); // 변환할 WTM Y 좌표 입니다
+
+// WTM 좌표를 WGS84 좌표계의 좌표로 변환합니다
+geocoder.transCoord(wtmX, wtmY, transCoordCB, {
+    input_coord: kakao.maps.services.Coords.WTM, // 변환을 위해 입력한 좌표계 입니다
+    output_coord: kakao.maps.services.Coords.WGS84 // 변환 결과로 받을 좌표계 입니다 
+});
+
+// 좌표 변환 결과를 받아서 처리할 콜백함수 입니다.
+function transCoordCB(result, status) {
+
+    localStorage.setItem('receive_trans_x', result[0].x);
+    localStorage.setItem('receive_trans_y', result[0].y);
+            
+
+
 
 function removeAllChildNods(places) {   
     while (places.hasChildNodes()) {
         places.removeChild (places.firstChild);
-        console.log("ㅅㅈㅅㅈ");
+        console.log("다시 ");
     }
 }
 
