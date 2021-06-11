@@ -7,10 +7,7 @@ body {
 .css-info {
     display: flex;
 }
-.receiver_map {
-    width: 70%;
-    height: 40em;
-}
+
 
 .css-search {
     display: flex;
@@ -40,13 +37,14 @@ body {
 
 .mainwrapper {
     display: flex;
+    height: 100%;
+    
 }
 
-
 .map {
-
     width: 98%;
-    height: 60vw;
+    height: 40em;
+    
 }
 
 .map_wrap,
