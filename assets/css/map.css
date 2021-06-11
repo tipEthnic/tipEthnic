@@ -42,9 +42,11 @@ body {
     display: flex;
 }
 
+
 .map {
-    width: 60%;
-    height: 70vw;
+
+    width: 98%;
+    height: 60vw;
 }
 
 .map_wrap,
@@ -91,6 +93,11 @@ body {
     margin: 3px 0;
 }
 
+.css-placewrapper {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+}
 #placesList li {
     list-style: none;
 }
