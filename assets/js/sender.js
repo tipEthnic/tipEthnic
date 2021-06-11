@@ -1,7 +1,5 @@
-// // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-// var infowindow = new kakao
-//     .maps
-//     .InfoWindow({zIndex: 1});
+const places = document.querySelector(".js-placewrapper");
+
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
@@ -10,24 +8,15 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     };
 
 
-function toggle() {
-    var display = document.getElementById('map').style.display;
-    if (display === 'block') { // on -> off
-        document.getElementById('map').style.display = "none";
-    } else { // off -> on
-        document.getElementById('map').style.display = "block";
-    }
-}
-
-
-// 지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption);
-toggle();  //map -> display :  none으로 지정.
 
-// 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places();
 
+
+
+let status = 0;
 function searchPlaces() {
+    status++;
     var keyword = document
         .getElementById('keyword')
         .value;
@@ -36,9 +25,13 @@ function searchPlaces() {
         alert('키워드를 입력해주세요!');
         return false;
     }
-    // 키워드로 장소를 검색합니다
-    ps.keywordSearch(keyword, placesSearchCB);
-    // console.log(ps);
+    if(status === 1 ){
+        console.log("검색");
+        ps.keywordSearch(keyword, placesSearchCB, {
+            size : 7
+        });
+        status = 0;
+    }
 }
 
 let place;
@@ -49,6 +42,9 @@ function placesSearchCB(data, status, pagination) {
     // 장소 검색이 완료되었다면
     if (status === kakao.maps.services.Status.OK) {
 
+        a=0
+
+        removeAllChildNods(places);
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해 LatLngBounds 객체에 좌표를 추가합니다
         var bounds = new kakao.maps.LatLngBounds();
 
@@ -62,12 +58,23 @@ function placesSearchCB(data, status, pagination) {
             a++;
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
-        toggle();
+
+        displayPagination(pagination);
+        // toggle();
         //검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
 
         place_data = data;
-        console.log(place_data);
+    }else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+
+        alert('검색 결과가 존재하지 않습니다.');
+        return;
+
+    } else if (status === kakao.maps.services.Status.ERROR) {
+
+        alert('검색 결과 중 오류가 발생했습니다.');
+        return;
+
     }
 }
 
@@ -88,12 +95,12 @@ document.addEventListener('click', function (event) {
         // console.log(Mbtn.parentNode);
         // console.log(Mbtn);
 
-    
+
     } else if (event.target.className === "js-selectBtn") {
         const Sbtn = event.target;
         const Sbtn_num = Sbtn.value;
 
-        
+
         localStorage.setItem('sender_name', place_data[Sbtn_num].place_name);
         localStorage.setItem('sender_address', place_data[Sbtn_num].address_name);
         localStorage.setItem(
@@ -102,9 +109,9 @@ document.addEventListener('click', function (event) {
         );
         localStorage.setItem('sender_latitude_y', place_data[Sbtn_num].y); //위도
         localStorage.setItem('sender_longitude_x', place_data[Sbtn_num].x); // 경도
-        
+
         setTimeout(function () {
-           
+
             sender_place = localStorage.getItem("sender_name");
             //location.reload();
             window.opener.document.querySelector("#sender").value = sender_place;
@@ -113,12 +120,12 @@ document.addEventListener('click', function (event) {
     }
 });
 
-/* 버튼 ------------------------------- */
+
 
 let a = 0;
 function displayList(place) {
-    const places = document.querySelector(".js-placewrapper");
-    const divwrapper = document.createElement("div");
+
+    const divwrapper = document.createElement("li");
     divwrapper.className = "css-placeInfo"
     const Infowrapper = document.createElement("div");
     const newdiv = document.createElement("div");
@@ -148,6 +155,36 @@ function displayList(place) {
 
 }
 
+
+/* 지도 WTM좌표-> WGS84좌표로 변환------*/
+var geocoder = new kakao.maps.services.Geocoder(), // 좌표계 변환 객체를 생성합니다
+    wtmX = localStorage.getItem("sender_longitude_x"), // 변환할 WTM X 좌표 입니다
+    wtmY = localStorage.getItem("sender_latitude_y"); // 변환할 WTM Y 좌표 입니다
+
+// WTM 좌표를 WGS84 좌표계의 좌표로 변환합니다
+geocoder.transCoord(wtmX, wtmY, transCoordCB, {
+    input_coord: kakao.maps.services.Coords.WTM, // 변환을 위해 입력한 좌표계 입니다
+    output_coord: kakao.maps.services.Coords.WGS84 // 변환 결과로 받을 좌표계 입니다
+});
+
+// 좌표 변환 결과를 받아서 처리할 콜백함수 입니다.
+function transCoordCB(result, status) {
+
+    localStorage.setItem('send_trans_x', result[0].x);
+    localStorage.setItem('send_trans_y', result[0].y);
+
+}
+
+
+function removeAllChildNods(places) {
+    while (places.hasChildNodes()) {
+        places.removeChild (places.firstChild);
+        console.log("다시 ");
+    }
+}
+
+
+
 // 지도에 마커를 표시하는 함수입니다
 function displayMarker(place,y,x) {
     // 마커를 생성하고 지도에 표시합니다
@@ -167,4 +204,34 @@ function displayMarker(place,y,x) {
 
 }
 
-// 선택 버튼 눌렀을 때 > 해당 place 정보 index.html 페이지로. 지도 버튼 누르면 > 지도 표시 > 해당 위치 마크 표시
+
+
+function displayPagination(pagination) {
+    var paginationEl = document.getElementById('pagination'),
+        fragment = document.createDocumentFragment(),
+        i;
+
+    // 기존에 추가된 페이지번호를 삭제합니다
+    while (paginationEl.hasChildNodes()) {
+        paginationEl.removeChild (paginationEl.lastChild);
+    }
+
+    for (i=1; i<=pagination.last; i++) {
+        var el = document.createElement('a');
+        el.href = "#";
+        el.innerHTML = i;
+
+        if (i===pagination.current) {
+            el.className = 'on';
+        } else {
+            el.onclick = (function(i) {
+                return function() {
+                    pagination.gotoPage(i);
+                }
+            })(i);
+        }
+
+        fragment.appendChild(el);
+    }
+    paginationEl.appendChild(fragment);
+}
