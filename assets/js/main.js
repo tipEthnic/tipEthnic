@@ -11,6 +11,9 @@ function goPopup2() {
 				"width=800, height=500, left=100, top=50");
 }
 
+
+
+
 const btn = document.getElementById("Delivery-fee-Calculation");
 const Distance = document.getElementById("distance");
 const Fee = document.getElementById("fee");
