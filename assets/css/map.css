@@ -40,13 +40,14 @@ body {
 
 .mainwrapper {
     display: flex;
+    height: 100%;
+    
 }
 
-
 .map {
-
     width: 98%;
-    height: 60vw;
+    height: 70vw;
+    
 }
 
 .map_wrap,

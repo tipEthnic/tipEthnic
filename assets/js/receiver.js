@@ -41,11 +41,11 @@ function searchPlaces() {
 
     if(status === 1 ){
         console.log("검색");
-        ps.keywordSearch(keyword, placesSearchCB);
+        ps.keywordSearch(keyword, placesSearchCB, {
+            size : 8
+        });
         status = 0;
     }
-    // 키워드로 장소를 검색합니다
-   
 }
 
 let place;
@@ -61,9 +61,10 @@ function placesSearchCB(data, status, pagination) {
         removeAllChildNods(places);
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해 LatLngBounds 객체에 좌표를 추가합니다
        
+
         var bounds = new kakao.maps.LatLngBounds();
         
-        // console.log(data);
+        console.log(data);
         for (var i = 0; i < data.length; i++) {
             // console.log(data[i]);
             place = data[i];
@@ -73,8 +74,8 @@ function placesSearchCB(data, status, pagination) {
             a++;
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
-        // disp layPagination(pagination); // 페이지 번호 표출
-
+       
+        displayPagination(pagination);
         // toggle();
         //검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
@@ -94,11 +95,7 @@ function placesSearchCB(data, status, pagination) {
     }   
 }
 
-/*------------------페이지 번호 추가 --------------*/
-// function displayPagination(pagination){
-//     let fragment = document.createDocumentFragment();
-// }
-/*------------------페이지 번호 추가 --------------*/
+
 
 
 
@@ -210,4 +207,32 @@ function displayMarker(place,y,x) {
 
 }
 
-// 선택 버튼 눌렀을 때 > 해당 place 정보 index.html 페이지로. 지도 버튼 누르면 > 지도 표시 > 해당 위치 마크 표시
+function displayPagination(pagination) {
+    var paginationEl = document.getElementById('pagination'),
+        fragment = document.createDocumentFragment(),
+        i; 
+
+    // 기존에 추가된 페이지번호를 삭제합니다
+    while (paginationEl.hasChildNodes()) {
+        paginationEl.removeChild (paginationEl.lastChild);
+    }
+    
+    for (i=1; i<=pagination.last; i++) {
+        var el = document.createElement('a');
+        el.href = "#";
+        el.innerHTML = i;
+
+        if (i===pagination.current) {
+            el.className = 'on';
+        } else {
+            el.onclick = (function(i) {
+                return function() {
+                    pagination.gotoPage(i);
+                }
+            })(i);
+        }
+
+        fragment.appendChild(el);
+    }
+    paginationEl.appendChild(fragment);
+}

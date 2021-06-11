@@ -13,14 +13,18 @@
             <!-- Address Form -->
             <img src="/assets/images/silver-d.png" id="img-search">
             <form onsubmit="searchPlaces(); return false;">
-                <input type="text" id="keyword" >
+                <input type="text" id="keyword">
                 <button type="submit" id="receiver_btn">검색</button>
             </form>
         </div>
         <hr>
 
         <div class="mainwrapper">
-            <ul class="js-placewrapper css-placewrapper"></ul>
+            <div class="mainwrapper_content">
+                <ul class="js-placewrapper css-placewrapper"></ul>
+                <div id="pagination"></div>
+            </div>
+
             <div id="map" class="map" style="display: block;"></div>
         </div>
         <div id="result"></div>
