@@ -1,14 +1,9 @@
 const COORDS = 'coords';
-const nowBtn = document.querySelector(".nowBtn");
-
-// var geocoder = new kakao.maps.services.Geocoder();
 
 function saveCoords(coordsObj) {
     localStorage.setItem(COORDS, JSON.stringify(coordsObj));
     //localstorage의 key, value 값은 모두 string 타입으로 저장되기때문에 변환시켜준다.
-
 }
-
 
 function handleSuccess(position) {
     const latitude = position.coords.latitude;
@@ -21,38 +16,11 @@ function handleSuccess(position) {
     console.log(coordsObj);
     console.log(coordsObj.latitude);
     console.log(coordsObj.longitude);
-
-    lat = coordsObj.latitude;
-    lon = coordsObj.longitude;
-
     saveCoords(coordsObj); // localStorage에 위치 저장
-
-
-    // document.querySelector("#receiver").value = coordsObj.longitude;
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function handleError() {
     console.log('XXXXXXXXX');
-    alert("현재 위치를 가져올 수 없습니다!");
 }
 
 function askCoords() {
@@ -68,7 +36,10 @@ function loadCoords() {
 }
 
 function init() {
-    nowBtn.addEventListener("click",loadCoords);
+    loadCoords();
 }
 
 init();
+
+
+// 다시 로드할 때는 localstorage coords값 삭제해야함.

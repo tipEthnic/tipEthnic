@@ -8,6 +8,10 @@ body {
     display: flex;
 }
 
+.receiver_map {
+    width: 70%;
+    height: 40em;
+}
 
 .css-search {
     display: flex;
@@ -38,13 +42,13 @@ body {
 .mainwrapper {
     display: flex;
     height: 100%;
-    
+
 }
 
 .map {
     width: 98%;
-    height: 40em;
-    
+    height: 60vw;
+
 }
 
 .map_wrap,
