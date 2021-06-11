@@ -26,7 +26,8 @@
             style="display: block; margin: 0px auto 70px auto;"/>
         <link rel="stylesheet" href="/assets/css/tipEthnic.css"/>
     </head>
-    <body>
+    
+	<body onload="default_map();">
 
         <!-- Address Form -->
         <center>
@@ -46,19 +47,32 @@
                     추가 배달비 조회</button>
             </br>
         </br>
-        <div>
-            거리: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span id="distance"></span>
-            km</br>
-    </div>
-    <div>
-        추가 배달비: &nbsp;<span id="fee"></span>
-        원</br>
-</div>
+        <div id="result"></div>
+		<br>
+		<div class="ft_area">
+		</div>
+			<div class="map_act_btn_wrap clear_box"></div>
+			<div class="clear"></div>
+		</div>
+	
+		<div id="map_wrap" class="map_wrap">
+			<div id="map_div"></div>
+		</div>
+		<div class="map_act_btn_wrap clear_box"></div>
+
+		<br />
+        
+
 </center>
 
 <!-- Scripts -->
 <script src="/assets/js/main.js"></script>
-<script src="/assets/js/nn.js"></script>
+<script src="/assets/js/disCal.js"></script>
+<script
+            type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d5a0cfc898b4333b701a26737da1fde7"></script>
+<script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxd89e57a2e4c84165b7661e4884dc603d"></script>
+
 </body>
 </html>
