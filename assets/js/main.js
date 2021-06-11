@@ -17,5 +17,6 @@ const btn = document.getElementById("Delivery-fee-Calculation");
 
 //console.log(send_trans_lon);
 btn.addEventListener('click', function() {
-	
+	default_map();
 });
+

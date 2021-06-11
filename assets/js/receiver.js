@@ -105,6 +105,7 @@ document.addEventListener('click', function (event) {
 
         setTimeout(function () {
             receiver_place = localStorage.getItem("receiver_name");
+            //location.reload();
             window.opener.document.querySelector("#receiver").value = receiver_place;
             window.close();
         }, 1000);
