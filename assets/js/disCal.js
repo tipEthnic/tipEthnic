@@ -11,6 +11,10 @@ var resultdrawArr = [];
 var resultMarkerArr = [];
 
 
+function send_maginot(){
+    var maginot = document.getElementById('maginot').value;
+    console.log(maginot);
+}
 
 function now_map(){
     map = new Tmapv2.Map("map_div", {
@@ -98,11 +102,12 @@ marker_e = new Tmapv2.Marker(
                                                 .toFixed(1) + "km,";
                                         var tmoney = " 예상 추가 배달비 : "
                                             + ((resultData[0].properties.totalDistance / 1000)
-                                            .toFixed(1)-2.0)*1000+"원";
+                                            .toFixed(1)-maginot.value)*1000+"원";
                                         if ((resultData[0].properties.totalDistance / 1000)
-                                            .toFixed(1) < 2) {
-                                            tmoney = "2km 이내 입니다.";
+                                            .toFixed(1) < maginot.value) {
+                                            tmoney = maginot.value + "km 이내 입니다.";
                                         }
+                                        console.log(maginot.value)
                                         var result = "<p>" + tDistance + "<br><b>" + tmoney + "</b></p>";
 
 
