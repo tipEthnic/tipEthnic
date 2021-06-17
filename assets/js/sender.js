@@ -75,7 +75,7 @@ function placesSearchCB(data, status, pagination) {
         alert('검색 결과 중 오류가 발생했습니다.');
         return;
 
-    }   
+    }
 }
 
 
@@ -95,12 +95,12 @@ document.addEventListener('click', function (event) {
         // console.log(Mbtn.parentNode);
         // console.log(Mbtn);
 
-    
+
     } else if (event.target.className === "js-selectBtn") {
         const Sbtn = event.target;
         const Sbtn_num = Sbtn.value;
 
-        
+
         localStorage.setItem('sender_name', place_data[Sbtn_num].place_name);
         localStorage.setItem('sender_address', place_data[Sbtn_num].address_name);
         localStorage.setItem(
@@ -109,10 +109,11 @@ document.addEventListener('click', function (event) {
         );
         localStorage.setItem('sender_latitude_y', place_data[Sbtn_num].y); //위도
         localStorage.setItem('sender_longitude_x', place_data[Sbtn_num].x); // 경도
-        
+
         setTimeout(function () {
-           
+
             sender_place = localStorage.getItem("sender_name");
+            //location.reload();
             window.opener.document.querySelector("#sender").value = sender_place;
             window.close();
         }, 1000);
@@ -163,7 +164,7 @@ var geocoder = new kakao.maps.services.Geocoder(), // 좌표계 변환 객체를
 // WTM 좌표를 WGS84 좌표계의 좌표로 변환합니다
 geocoder.transCoord(wtmX, wtmY, transCoordCB, {
     input_coord: kakao.maps.services.Coords.WTM, // 변환을 위해 입력한 좌표계 입니다
-    output_coord: kakao.maps.services.Coords.WGS84 // 변환 결과로 받을 좌표계 입니다 
+    output_coord: kakao.maps.services.Coords.WGS84 // 변환 결과로 받을 좌표계 입니다
 });
 
 // 좌표 변환 결과를 받아서 처리할 콜백함수 입니다.
@@ -171,11 +172,11 @@ function transCoordCB(result, status) {
 
     localStorage.setItem('send_trans_x', result[0].x);
     localStorage.setItem('send_trans_y', result[0].y);
-            
+
 }
 
 
-function removeAllChildNods(places) {   
+function removeAllChildNods(places) {
     while (places.hasChildNodes()) {
         places.removeChild (places.firstChild);
         console.log("다시 ");
@@ -208,13 +209,13 @@ function displayMarker(place,y,x) {
 function displayPagination(pagination) {
     var paginationEl = document.getElementById('pagination'),
         fragment = document.createDocumentFragment(),
-        i; 
+        i;
 
     // 기존에 추가된 페이지번호를 삭제합니다
     while (paginationEl.hasChildNodes()) {
         paginationEl.removeChild (paginationEl.lastChild);
     }
-    
+
     for (i=1; i<=pagination.last; i++) {
         var el = document.createElement('a');
         el.href = "#";
