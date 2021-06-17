@@ -108,7 +108,7 @@ marker_e = new Tmapv2.Marker(
                                             tmoney = maginot.value + "km 이내 입니다.";
                                         }
                                         console.log(maginot.value)
-                                        var result = "<p>" + tDistance + "<br><b>" + tmoney + "</b></p>";
+                                        var result = "<center> <p>" + tDistance + "<br><b>" + tmoney + "</b></p> </center>";
 
 
 

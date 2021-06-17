@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 
 html, body, div, span, p {
@@ -17,17 +16,6 @@ body {
 
 body {
   -webkit-text-size-adjust: none; }
-
-
-
-
-
-
-/* input, select, textarea {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -ms-appearance: none;
-  appearance: none; } */
 
 
 
@@ -70,7 +58,7 @@ body {
   -webkit-justify-content: center;
   -ms-justify-content: center;
   justify-content: center;
-  background-color: #000;
+  background-color: rgb(255, 255, 255);
   padding: 6em 4em 4em 4em; }
   body.is-preload *, body.is-preload *:before, body.is-preload *:after {
     -moz-animation: none !important;
@@ -86,18 +74,18 @@ body {
     z-index: 2; }
   @media screen and (max-width: 1680px) {
     body {
-      padding: 6em 3.5em 3.5em 3.5em; } }
+      padding: 0.1em 3.5em 3.5em 0em; } }
   @media screen and (max-width: 736px) {
     body {
-      padding: 5em 2em 2em 2em; } }
-  @media screen and (max-width: 360px) {
+      padding: 0.1em 2em 2em 2em; } }
+  @media screen and (max-width: 0px) {
     body {
-      padding: 5em 1.25em 1.25em 1.25em; } }
+      padding: 0.1em 1.25em 1.25em 0em; } }
 
 
 /* Type */
 body, input {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(0, 0, 0, 0.75);
   font-family: "Roboto", sans-serif;
   font-size: 16pt;
   font-weight: 400;
@@ -141,7 +129,7 @@ input{
        } }
   @media screen and (max-width: 480px) {
      input {
-      width : 9em;
+      width : 14em;
       } }
       
 .input_wrapper{
@@ -150,12 +138,18 @@ input{
 
 p {
   margin: 0 0 2em 0; 
-  
 }
 
+hr {
+  width: 100em;
+  height: 0.2em;
+  background-color: #949494;
+}
 
-
-
+ul{
+  list-style:none;
+  padding-left:0px;
+  }
  
 input[type="text"]{
   -moz-appearance: none;
@@ -170,10 +164,10 @@ input[type="text"]{
   -webkit-transition: border-color 0.2s ease, background-color 0.2s ease;
   -ms-transition: border-color 0.2s ease, background-color 0.2s ease;
   transition: border-color 0.2s ease, background-color 0.2s ease;
-  background-color: rgba(255, 255, 255, 0.541);
+  background-color: rgb(255, 255, 255);
   border-radius: 6px;
-  border: none;
-  border: solid 2px rgba(255, 255, 255, 0.74);
+  border: 1;
+  border: solid 2px rgba(124, 124, 124, 0.74);
   color: inherit;
   outline: 0;
   padding: 0 1em;
@@ -211,8 +205,8 @@ button,
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
   background-color: #b1b1b1a4;
   border-radius: 6px;
-  border: 0;
-  color: #ffffff;
+  border: 1;
+  color: #000000;
   cursor: pointer;
   display: inline-block;
   font-weight: 400;
@@ -222,28 +216,6 @@ button,
   text-align: center;
   text-decoration: none;
   white-space: nowrap; }
-  /* input[type="submit"]:hover,
-  input[type="reset"]:hover,
-  input[type="button"]:hover,
-  button:hover,
-  .button:hover {
-    background-color: #dddddd; }
-  input[type="submit"]:active,
-  input[type="reset"]:active,
-  input[type="button"]:active,
-  button:active,
-  .button:active {
-    background-color: #a1a1a1; }
-  input[type="submit"].disabled, input[type="submit"]:disabled,
-  input[type="reset"].disabled,
-  input[type="reset"]:disabled,
-  input[type="button"].disabled,
-  input[type="button"]:disabled,
-  button.disabled,
-  button:disabled,
-  .button.disabled,
-  .button:disabled {
-    opacity: 0.5; } */
   @media screen and (max-width: 480px) {
     input[type="submit"],
     input[type="reset"],
