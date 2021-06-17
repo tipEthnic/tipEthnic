@@ -3,7 +3,7 @@ const app = express();
 
 app.use('/assets',express.static(__dirname + "/assets/"));
 
-app.set('port',process.env.port||8080);
+
 
 
 app.get('/',function(req, res) {
@@ -11,8 +11,10 @@ app.get('/',function(req, res) {
     res.sendFile(__dirname + "/index.html");
 })
 
+const PORT = process.env.PORT
+app.listen(PORT)
 
-app.listen(8080,()=>{
+app.listen(3000,()=>{
     console.log("server is loading :)");
 })
 
