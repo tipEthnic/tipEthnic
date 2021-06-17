@@ -53,6 +53,7 @@ input, select, textarea {
   appearance: none; }
 
 
+
 /* Basic */
 @-ms-viewport {
   width: device-width; }
@@ -227,7 +228,8 @@ body, input, select, textarea {
   font-size: 16pt;
   font-weight: 400;
   letter-spacing: -0.01em;
-  line-height: 1.65em; }
+  line-height: 1.65em; 
+  }
   @media screen and (max-width: 1680px) {
     body, input, select, textarea {
       font-size: 12pt; } }
@@ -242,7 +244,33 @@ body, input, select, textarea {
       font-size: 12pt; } }
   @media screen and (max-width: 480px) {
     body, input, select, textarea {
-      font-size: 12pt; } }
+      font-size: 8pt; } }
+
+      /* Type */
+input{
+  width : 30em;
+  }
+  @media screen and (max-width: 1680px) {
+    input {
+      width : 27em;
+       } }
+  @media screen and (max-width: 1280px) {
+    input {
+      width : 24em;
+      } }
+  @media screen and (max-width: 980px) {
+    input{
+      width : 21em;
+       } }
+  @media screen and (max-width: 736px) {
+     input {
+      width : 18em;
+       } }
+  @media screen and (max-width: 480px) {
+     input {
+      width : 9em;
+      } }
+      
 
 a {
   -moz-transition: border-bottom-color 0.2s ease, color 0.2s ease;
@@ -484,7 +512,7 @@ textarea {
   outline: 0;
   padding: 0 1em;
   text-decoration: none;
-  width: 50%; }
+  /* width: 50%;*/ }
   input[type="text"]:invalid,
   input[type="password"]:invalid,
   input[type="email"]:invalid,
@@ -531,6 +559,7 @@ input[type="reset"],
 input[type="button"],
 button,
 .button {
+
   -moz-appearance: none;
   -webkit-appearance: none;
   -ms-appearance: none;
@@ -579,6 +608,9 @@ button,
     input[type="button"],
     button,
     .button {
+      width : 2em;
+      font-size :1em;
+     
       padding: 0; } }
 
 /* Footer */
