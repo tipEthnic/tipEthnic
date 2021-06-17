@@ -14,79 +14,93 @@
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no"/>
-        <img
-            srcset="/assets/images/title01.png 320w,
-		                /assets/images/title01.png 480w,
-		                /assets/images/title01.png 800w"
-            sizes="(max-width: 320px) 280px,
-	   				       (max-width: 480px) 440px,
-					                            800px"
-            src="/assets/images/title01.png"
-            alt="title-팁의민족"
-            style="display: block;"
-            margin=" 150px auto 0px auto;" />
+
         <link rel="stylesheet" href="/assets/css/tipEthnic.css"/>
     </head>
-    
-	<body onload="now_map();">
 
-        <!-- Address Form -->
-        <center>
-          <br>
-          <a>이 사이트는 배달 거리가 2km 이상일 때, 100m당 100원을 추가 배달비로 산정합니다.</a><br>
-            가게 위치 &nbsp;
-            <img src="/assets/images/gold-d.png" width="17px"/>
-            <input type="text" id="sender" readonly="readonly">
-            <button type="button" onclick="javascript:goPopup();">
-                검색</button><br/>
-            배달 받을 위치
-            &nbsp;
-            <img src="/assets/images/silver-d.png" width="17px"/>
-            <input type="text" id="receiver" readonly="readonly">
-            <button type="button" onclick="javascript:goPopup2();">
-                검색</button>
-            <button type="button" id="setnow">
-                현위치로</button><br/>
-            <br>
-            <!--거리 입력-->
-            <form onsubmit="send_maginot(); return false;">
-            <input type="text" id="maginot"> &nbsp km
-            </form>
-            <br>
-            <br>
+    <body onload="now_map();">
+        <div class="container">
+            <div class="title">
+                <img
+                    srcset="/assets/images/title01.png 320w,
+                    /assets/images/title01.png 480w,
+                    /assets/images/title01.png 800w"
+                    sizes="(max-width: 320px) 280px,
+                          (max-width: 480px) 440px,
+                                            800px"
+                    src="/assets/images/title01.png"
+                    alt="title-팁의민족"
+                    style="display: block;
+        margin: 0 auto;"/>
+            </div>
 
-                <!--Delivery fee Calculation-->
-                <button type="button" id="Delivery-fee-Calculation">
-                    추가 배달비 조회</button>
-            </br>
-        </br>
+            <!-- Address Form -->
+            <center>
+                <div class="input_wrapper" style="margin-bottom: 2em;">
+                    <div class="explain">
+                        <p>이 사이트는 배달 거리가 2km 이상일 때, 100m당 100원을 추가 배달비로 산정합니다.</p>
+                    </div>
+                    <div class="sender">
+                        <span>가게 위치</span>
+                        <img src="/assets/images/gold-d.png" width="17px"/>
+                        <input type="text" id="sender" readonly="readonly">
+                        <button type="button" onclick="javascript:goPopup();">
+                            검색</button><br/>
+                    </div>
 
-        <div id="result"></div>
-		      <br>
-		    <div class="ft_area"></div>
-			  <div class="map_act_btn_wrap clear_box"></div>
-			  <div class="clear"></div>
-		    </div>
+                    <div class="receiver" >
+                        <span>배달 받을 위치</span>
+                        <img src="/assets/images/silver-d.png" width="17px"/>
+                        <input type="text" id="receiver" readonly="readonly" ">
+                        <button type="button" onclick="javascript:goPopup2();">
+                            검색</button>
+                        <button type="button" id="setnow">
+                            현위치로</button><br/>
+                    </div>
 
-		    <div id="map_wrap" class="map_wrap">
-			  <div id="map_div"></div>
-		    </div>
-		    <div class="map_act_btn_wrap clear_box"></div>
+                    <!--거리 입력-->
+                    <div class="distance" style="margin-top: 2em;">
+                        <form onsubmit="send_maginot(); return false;">
+                            <input type="text" id="maginot" style="width: 6em;">
+                        </form>
+                    </div>
 
-</center>
+                    <div class="cal">
+                        <button type="button" id="Delivery-fee-Calculation">
+                            추가 배달비 조회</button>
+                    </div>
+                </div>
 
-<!-- Scripts -->
-<script src="/assets/js/main.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d5a0cfc898b4333b701a26737da1fde7&libraries=services"></script>
-<script src="/assets/js/now.js"></script>
+                <div class="result_wrapper">
+                    <div class="resultInfo">
+                        <div id="result"></div>
+                    </div>
 
-<script src="/assets/js/disCal.js"></script>
-<script src="/assets/js/now.js"></script>
-<script
+                    <!-- <div class="ft_area"></div> <div class="map_act_btn_wrap clear_box"></div>
+                    <div class="clear"></div> -->
+
+                    <div id="map_wrap" class="map_wrap">
+                        <div id="map_div"></div>
+                    </div>
+                    <!-- <div class="map_act_btn_wrap clear_box"></div> -->
+                </div>
+
+            </center>
+        </div>
+        <!-- Scripts -->
+        <script src="/assets/js/main.js"></script>
+        <!-- <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d5a0cfc898b4333b701a26737da1fde7&libraries=services"></script>
+        <script src="/assets/js/now.js"></script> -->
+
+        <script src="/assets/js/disCal.js"></script>
+        <script src="/assets/js/now.js"></script>
+        <script
             type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d5a0cfc898b4333b701a26737da1fde7"></script>
-<script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxd89e57a2e4c84165b7661e4884dc603d"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script
+            src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxd89e57a2e4c84165b7661e4884dc603d"></script>
 
-</body>
+    </body>
 </html>
