@@ -45,8 +45,14 @@
             <input type="text" id="receiver" readonly="readonly">
             <button type="button" onclick="javascript:goPopup2();">
                 검색</button>
-            <button type="button" onclick="">
+            <button type="button" id="setnow">
                 현위치로</button><br/>
+            <br>
+            <!--거리 입력-->
+            <form onsubmit="send_maginot(); return false;">
+            <input type="text" id="maginot"> &nbsp km
+            </form>
+            <br>
             <br>
 
                 <!--Delivery fee Calculation-->
