@@ -9,7 +9,7 @@ function handleSuccess(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     const coordsObj = { // 객체의 key,  value 값이 동일할 때에는 한번만 써줘도 된다.
-        latitude,       // localStorage에 객체로 value에 저장하기위해서 객체에 넣어준다.
+        latitude, // localStorage에 객체로 value에 저장하기위해서 객체에 넣어준다.
         longitude
     };
 
@@ -24,12 +24,14 @@ function handleError() {
 }
 
 function askCoords() {
-    navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
+    navigator
+        .geolocation
+        .getCurrentPosition(handleSuccess, handleError);
 }
 
 function loadCoords() {
     const loadedCoords = localStorage.getItem(COORDS);
-    if(loadedCoords === null) {
+    if (loadedCoords === null) {
         // localStorage에 좌표값이 저장되어있지않다면
         askCoords(); // 좌표값을 물어본다
     }
@@ -40,6 +42,5 @@ function init() {
 }
 
 init();
-
 
 // 다시 로드할 때는 localstorage coords값 삭제해야함.
