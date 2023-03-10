@@ -6,50 +6,42 @@
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no"/>
-        <link rel="stylesheet" href="/assets/css/main.css"/>
-        <link rel="stylesheet" href="reset.css">
+        <link type="text/css" rel="stylesheet" href="/assets/css/main.css"/>
     </head>
 
     <body onload="now_map();">
         <header>
-            <div class="title">
-                <img
-                    srcset="/assets/images/title01.png 320w,
+            <img
+                srcset="/assets/images/title01.png 320w,
                 /assets/images/title01.png 480w,
                 /assets/images/title01.png 800w"
-                    sizes="(max-width: 320px) 280px,
+                sizes="(max-width: 320px) 280px,
                         (max-width: 480px) 440px,
                                             800pnx"
-                    src="/assets/images/title01.pg"
-                    alt="title-팁의민족"/>
-            </div>
+                src="/assets/images/title01.pg"
+                alt="팁의 민족 title"/>
+
             <div>이 사이트는 배달 거리가 입력한 거리(km) 이상일 때, 100m당 100원을 추가 배달비로 산정합니다.</div>
         </header>
 
         <section>
             <div class="input_wrapper">
                 <div class="sender">
-                    <span>가게 위치</span>
-                    <img src="/assets/images/gold-d.png">
-                    <input type="text" id="sender" readonly="readonly">
+                    <label for="sender"><div>가게</div></label>
+                    <input class="input_field sender_input" type="text" id="sender" readonly="readonly">
                     <button type="button" onclick="javascript:goPopup();">검색</button>
                 </div>
 
                 <div class="receiver">
-                    <span>배달 받을 위치</span>
-                    <img src="/assets/images/silver-d.png">
-                    <input type="text" id="receiver" readonly="readonly" ">
+                    <label for="receiver"><div>배달장소</div></label>
+                    <input class="input_field receiver_input" type="text" id="receiver" readonly="readonly" >
                     <button type="button" onclick="javascript:goPopup2();">검색</button>
                     <button type="button" id="setnow">현위치</button>
                 </div>
 
                 <!--거리 입력-->
-                <!-- <div class="distance">
-                    <form onsubmit="send_maginot(); return false;">
-                        <input type="text" id="maginot">
-                        <div>km</div>
-                    </form>
-                </div> -->
+                <!-- <div class="distance"> <form onsubmit="send_maginot(); return false;">
+                <input type="text" id="maginot"> <div>km</div> </form> </div> -->
 
                 <div class="cal">
                     <button type="button" id="Delivery-fee-Calculation">조회</button>
@@ -60,10 +52,8 @@
                 <div class="resultInfo">
                     <div id="result"></div>
                 </div>
-
-                <div id="map_wrap" class="map_wrap">
-                    <div id="map_div"></div>
-                </div>
+                       
+                <!-- <div id="map_wrap" class="map_wrap"> <div id="map_div"></div> </div> -->
             </div>
 
         </section>
