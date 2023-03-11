@@ -1,4 +1,13 @@
-function goPopup() {
+const senderBtn = document.querySelector(".senderBtn");
+const receiverBtn = document.querySelector(".receiverBtn");
+const btn = document.getElementById("Delivery-fee-Calculation");
+const nowBtn = document.querySelector(".nowBtn");
+const maginot_check = document.getElementById("maginot").value;
+
+senderBtn.addEventListener("click",searchSender);
+receiverBtn.addEventListener("click",searchReceiver);
+
+function searchSender() {
     window.open(
         "/assets/html/sender_address_popup.html",
         "주소 받아오기",
@@ -6,7 +15,7 @@ function goPopup() {
     );
 }
 
-function goPopup2() {
+function searchReceiver() {
     window.open(
         "/assets/html/receiver_address_popup.html",
         "주소 받아오기",
@@ -14,11 +23,6 @@ function goPopup2() {
     );
 }
 
-const btn = document.getElementById("Delivery-fee-Calculation");
-const now_btn = document.getElementById("setnow");
-const maginot_check = document
-    .getElementById("maginot")
-    .value;
 
 //console.log(send_trans_lon);
 btn.addEventListener('click', function () {
@@ -26,7 +30,7 @@ btn.addEventListener('click', function () {
     default_map();
 
 });
-now_btn.addEventListener('click', function () {
+nowBtn.addEventListener('click', function () {
     localStorage.setItem('receiver_latitude_y', localStorage.getItem('coords_lat'));
     localStorage.setItem(
         'receiver_longitude_x',
