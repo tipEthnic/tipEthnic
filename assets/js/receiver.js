@@ -2,30 +2,36 @@ const places = document.querySelector(".js-placewrapper");
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
-        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+        center: new kakao
+            .maps
+            .LatLng(37.566826, 126.9786567), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
 
+var map = new kakao
+    .maps
+    .Map(mapContainer, mapOption);
 
-var map = new kakao.maps.Map(mapContainer, mapOption);
-
-var ps = new kakao.maps.services.Places();
+var ps = new kakao
+    .maps
+    .services
+    .Places();
 
 let status = 0;
 function searchPlaces() {
     status++;
-    var keyword = document.getElementById('keyword').value;
+    var keyword = document
+        .getElementById('keyword')
+        .value;
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
         alert('키워드를 입력해주세요!');
         return false;
     }
 
-    if(status === 1 ){
+    if (status === 1) {
         console.log("검색");
-        ps.keywordSearch(keyword, placesSearchCB, {
-            size : 7
-        });
+        ps.keywordSearch(keyword, placesSearchCB, {size: 7});
         status = 0;
     }
 }
@@ -38,13 +44,14 @@ function placesSearchCB(data, status, pagination) {
     // 장소 검색이 완료되었다면
     if (status === kakao.maps.services.Status.OK) {
 
-        a=0
+        a = 0
 
         removeAllChildNods(places);
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해 LatLngBounds 객체에 좌표를 추가합니다
 
-
-        var bounds = new kakao.maps.LatLngBounds();
+        var bounds = new kakao
+            .maps
+            .LatLngBounds();
 
         console.log(data);
         for (var i = 0; i < data.length; i++) {
@@ -64,7 +71,7 @@ function placesSearchCB(data, status, pagination) {
 
         place_data = data;
 
-    }else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 
         alert('검색 결과가 존재하지 않습니다.');
         return;
@@ -77,34 +84,37 @@ function placesSearchCB(data, status, pagination) {
     }
 }
 
-
-
 document.addEventListener('click', function (event) {
     if (event.target.className === "js-mapBtn") {
         const Mbtn = event.target;
-        const Mbtn_num = Mbtn.value ;
+        const Mbtn_num = Mbtn.value;
 
-        var bounds = new kakao.maps.LatLngBounds();
+        var bounds = new kakao
+            .maps
+            .LatLngBounds();
         // console.log(place_data);
-        console.log("Mbtn"+ Mbtn);
+        console.log("Mbtn" + Mbtn);
         console.log(Mbtn_num);
-        console.log(place_data  );
+        console.log(place_data);
         console.log(place_data[Mbtn_num]);
 
-        displayMarker(place_data[Mbtn_num],place_data[Mbtn.value].y,place_data[Mbtn_num].x );
-        bounds.extend(new kakao.maps.LatLng(place_data[Mbtn_num].y,place_data[Mbtn_num].x ));
+        displayMarker(
+            place_data[Mbtn_num],
+            place_data[Mbtn.value].y,
+            place_data[Mbtn_num].x
+        );
+        bounds.extend(
+            new kakao.maps.LatLng(place_data[Mbtn_num].y, place_data[Mbtn_num].x)
+        );
 
         map.setBounds(bounds);
 
         // document.getElementById('map').style.display = "block";
         // console.log(Mbtn.parentNode);
 
-
-
     } else if (event.target.className === "js-selectBtn") {
         const Sbtn = event.target;
         const Sbtn_num = Sbtn.value;
-
 
         localStorage.setItem('receiver_name', place_data[Sbtn_num].place_name);
         localStorage.setItem('receiver_address', place_data[Sbtn_num].address_name);
@@ -118,13 +128,15 @@ document.addEventListener('click', function (event) {
         setTimeout(function () {
             receiver_place = localStorage.getItem("receiver_name");
             //location.reload();
-            window.opener.document.querySelector("#receiver").value = receiver_place;
+            window
+                .opener
+                .document
+                .querySelector("#receiver")
+                .value = receiver_place;
             window.close();
         }, 500);
     }
 });
-
-
 
 let a = 0;
 function displayList(place) {
@@ -158,9 +170,11 @@ function displayList(place) {
 
 }
 
-
 /* 지도 WTM좌표-> WGS84좌표로 변환------*/
-var geocoder = new kakao.maps.services.Geocoder(), // 좌표계 변환 객체를 생성합니다
+var geocoder = new kakao
+        .maps
+        .services
+        .Geocoder(), // 좌표계 변환 객체를 생성합니다
     wtmX = localStorage.getItem("receiver_longitude_x"), // 변환할 WTM X 좌표 입니다
     wtmY = localStorage.getItem("receiver_latitude_y"); // 변환할 WTM Y 좌표 입니다
 
@@ -178,30 +192,29 @@ function transCoordCB(result, status) {
 
 }
 
-
 function removeAllChildNods(places) {
     while (places.hasChildNodes()) {
-        places.removeChild (places.firstChild);
+        places.removeChild(places.firstChild);
         console.log("다시 ");
     }
 }
 
 // 지도에 마커를 표시하는 함수입니다
-function displayMarker(place,y,x) {
+function displayMarker(place, y, x) {
     // 마커를 생성하고 지도에 표시합니다
-    var marker = new kakao.maps.Marker({
+    var marker = new kakao
+        .maps
+        .Marker({
             map: map,
-            position: new kakao.maps.LatLng(y,x),
+            position: new kakao
+                .maps
+                .LatLng(y, x)
         });
 
-    // 마커에 클릭이벤트를 등록합니다
-    // kakao.maps.event.addListener(marker, 'click', function () {
-    //         // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-    //         infowindow.setContent(
-    //             '<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>'
-    //         );
-    //         infowindow.open(map, marker);
-    //     });
+    // 마커에 클릭이벤트를 등록합니다 kakao.maps.event.addListener(marker, 'click', function () {
+    // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다         infowindow.setContent(             '<div
+    // style="padding:5px;font-size:12px;">' + place.place_name + '</div>'
+    // );         infowindow.open(map, marker);     });
 
 }
 
@@ -212,19 +225,19 @@ function displayPagination(pagination) {
 
     // 기존에 추가된 페이지번호를 삭제합니다
     while (paginationEl.hasChildNodes()) {
-        paginationEl.removeChild (paginationEl.lastChild);
+        paginationEl.removeChild(paginationEl.lastChild);
     }
 
-    for (i=1; i<=pagination.last; i++) {
+    for (i = 1; i <= pagination.last; i++) {
         var el = document.createElement('a');
         el.href = "#";
         el.innerHTML = i;
 
-        if (i===pagination.current) {
+        if (i === pagination.current) {
             el.className = 'on';
         } else {
-            el.onclick = (function(i) {
-                return function() {
+            el.onclick = (function (i) {
+                return function () {
                     pagination.gotoPage(i);
                 }
             })(i);

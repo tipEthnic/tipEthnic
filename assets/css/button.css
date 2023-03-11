@@ -1,0 +1,22 @@
+/* Button */
+button {
+    background-color: #b1b1b1a4;
+    border-radius: 6px;
+    border: 0;
+    color: #fcfcfb;
+    display: inline-block;
+    font-size: 16px;
+    height: 36px;
+    padding: 0 24px;
+    /* line-height: 1.75em; */
+    text-align: center;
+    text-decoration: none;
+  
+    cursor: pointer;
+    }
+   
+    @media screen and (max-width: 480px) {
+      button {
+        width : 4em;
+        height: 2em;
+        padding: 0; } } 

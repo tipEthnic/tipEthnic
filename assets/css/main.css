@@ -1,13 +1,6 @@
-@import "reset.css";
+@import url('./reset.css');
+@import url('./button.css');
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
-
-html, body, div, span, p {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline; }
 
 body{
   height: 100vh;
@@ -16,10 +9,60 @@ body{
   background-size : cover;
 }
 
+header{
+  width: 100%;
+  padding-top: 50px;
+  text-align: center;
+}
+
+header div{
+  color: #E5E0FF;
+  font-size: 1em;
+}
+
+section{
+  text-align: center;
+  margin: 30px 0;
+}
 
 
+.sender{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.receiver{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 75px;
+  padding: 5px 0;
+}
+
+
+.input_field{
+  width: 250px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+  background-color: rgb(233, 233, 233);
+  margin: 0 10px;
+}
+
+.searchBtn{
+  margin-right: 10px;
+}
+
+.cal {
+  margin-top: 30px;
+}
 
 /* Basic */
+/*
 @-ms-viewport {
   width: device-width; }
 
@@ -81,9 +124,10 @@ body {
   @media screen and (max-width: 360px) {
     body {
       padding: 5em 1.25em 1.25em 1.25em; } }
-
+*/
 
 /* Type */
+/*
 body, input {
   color: rgba(255, 255, 255, 0.75);
   font-family: "Roboto", sans-serif;
@@ -163,7 +207,8 @@ input[type="text"]{
   outline: 0;
   padding: 0 1em;
   text-decoration: none;
-  /* width: 50%;*/ }
+  */
+  /* width: 50%; }
   input[type="text"]:invalid,
   input[type="password"]:invalid,
   input[type="email"]:invalid,
@@ -175,41 +220,6 @@ input[type="text"]{
 input[type="text"]{
   height: 2em;
   color: black; }
+*/
 
 
-
-/* Button */
-input[type="button"],
-button,
-.button {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-  -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-  background-color: #b1b1b1a4;
-  border-radius: 6px;
-  border: 0;
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 400;
-  font-size: 1em;
-  height: 2em;
-  line-height: 1.75em;
-  text-align: center;
-  text-decoration: none;
-  white-space: nowrap; }
- 
-  @media screen and (max-width: 480px) {
-    input[type="submit"],
-    input[type="reset"],
-    input[type="button"],
-    button,
-    .button {
-      width : 4em;
-      height: 2em;
-      padding: 0; } }
