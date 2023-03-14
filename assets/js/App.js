@@ -1,13 +1,14 @@
-import {Button} from "./Button.js"
+import Button from "./Button.js"
 
 
 class App{
     constructor(){
+        this.button = new Button();
 
     }
 
     play(){
-        Button.clickSenderBtn();
+        this.button.clickSenderBtn();
     }
 }
 

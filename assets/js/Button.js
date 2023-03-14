@@ -5,14 +5,15 @@ const resultBtn = document.getElementById("Delivery-fee-Calculation");
 
 class Button {
     constructor(){
-        this.saveLatLong = saveLatLong();
+        // this.saveLatLong = saveLatLong();
     }
     
 
     clickSenderBtn(){
         // senderBtn.addEventListener("click",searchSender);
-        console.log("click")
-
+        senderBtn.addEventListener("click", () => {
+            console.log("senderBtn is clicked");
+        })
     }
 
     clickReceiverBtn(){
@@ -52,8 +53,7 @@ function saveLatLong() {
 
 
 
-export {Button}
-
+export default Button;
 
 
 
