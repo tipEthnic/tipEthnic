@@ -9,6 +9,7 @@ class App{
 
     play(){
         this.button.clickSenderBtn();
+        this.button.clickReceiverBtn();
     }
 }
 
