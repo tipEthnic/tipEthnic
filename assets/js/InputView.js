@@ -20,7 +20,7 @@
 const InputView = {
     searchSender(){
         window.open(
-            "/assets/html/sender_address_popup.html",
+            "../views/sender_address_popup.html",
             "주소 받아오기",
             "width=800, height=500, left=100, top=50"
         );
@@ -28,7 +28,7 @@ const InputView = {
 
     searchReceiver(){
         window.open(
-            "/assets/html/receiver_address_popup.html",
+            "../views/receiver_address_popup.html",
             "주소 받아오기",
             "width=800, height=500, left=100, top=50"
         );
