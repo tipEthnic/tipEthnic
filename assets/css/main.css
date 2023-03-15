@@ -4,7 +4,7 @@
 
 body{
   height: 100vh;
-  background-image: url("/assets/images/bg01.png");
+  background-image: url("../images/bg01.png");
   background-repeat: no-repeat;
   background-size : cover;
 }
@@ -53,7 +53,7 @@ section{
   margin: 0 10px;
 }
 
-.searchBtn{
+.receiverBtn{
   margin-right: 10px;
 }
 

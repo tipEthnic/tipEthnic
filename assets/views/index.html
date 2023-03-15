@@ -6,15 +6,15 @@
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no"/>
-        <link type="text/css" rel="stylesheet" href="/assets/css/main.css"/>
+        <link type="text/css" rel="stylesheet" href="css/main.css"/>
     </head>
 
-    <body onload="now_map();">
+    <body>
         <header>
             <img
-                srcset="/assets/images/title01.png 320w,
-                /assets/images/title01.png 480w,
-                /assets/images/title01.png 800w"
+                srcset="images/title01.png 320w,
+                images/title01.png 480w,
+                images/title01.png 800w"
                 sizes="(max-width: 320px) 280px,
                         (max-width: 480px) 440px,
                                             800pnx"
@@ -35,7 +35,7 @@
                 <div class="receiver">
                     <label for="receiver"><div>배달장소</div></label>
                     <input class="input_field receiver_input" type="text" id="receiver" readonly="readonly" >
-                    <button class="receiverBtn" type="button">검색</button>
+                    <button class="receiverBtn searchBtn" type="button">검색</button>
                     <button type="button" class="nowBtn">현위치</button>
                 </div>
 
@@ -44,7 +44,7 @@
                 <input type="text" id="maginot"> <div>km</div> </form> </div> -->
 
                 <div class="cal">
-                    <button type="button" id="Delivery-fee-Calculation">조회</button>
+                    <button type="button" class="resultBtn" id="Delivery-fee-Calculation">조회</button>
                 </div>
             </div>
 
@@ -57,9 +57,9 @@
             </div>
 
         </section>
-
+        <script type="module" src="../js/App.js"></script>
         <!-- Scripts -->
-        <script src="/assets/js/main.js"></script>
+        <!-- <script src="/assets/js/main.js"></script>
         <script src="/assets/js/disCal.js"></script>
         <script src="/assets/js/now.js"></script>
         <script
@@ -67,7 +67,7 @@
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d5a0cfc898b4333b701a26737da1fde7"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script
-            src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxd89e57a2e4c84165b7661e4884dc603d"></script>
+            src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxd89e57a2e4c84165b7661e4884dc603d"></script> -->
 
     </body>
 </html>
