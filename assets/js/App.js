@@ -10,6 +10,8 @@ class App{
     play(){
         this.button.clickSenderBtn();
         this.button.clickReceiverBtn();
+        this.button.clickNowBtn();
+        this.button.clickResultBtn();
     }
 }
 
