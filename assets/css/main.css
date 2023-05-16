@@ -27,16 +27,17 @@ header{
     width: 100%;
     color: #E5E0FF;
     text-align: center;
-    padding-top: 58px;
+    padding-top: 98px;
 }
 
 .explain {
     padding : 10px 0;
+    font-weight: 600;
 }
 
 section{
 text-align: center;
-margin: 30px 0;
+margin: 36px 0;
 }
 
 
@@ -53,16 +54,17 @@ margin: 30px 0;
 
 .inputName{
     justify-self: end;
+    font-weight: bold;
 }
 
 .input_field{
 width: 250px;
 height: 32px;
 font-size: 15px;
-border: 1px solid white;
+border: 1px solid #fcfcfc;
 border-radius: 5px;
 outline: none;
-background: transparent;
+background: #fcfcfc;
 /* background-color: rgb(233, 233, 233); */
 }
 
@@ -82,7 +84,12 @@ margin-right: 10px;
 }
 
 .resultInfo {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+}
+
+#result p{
+    padding-top: 10px;
+    font-weight: bold;
 }
 
 
@@ -99,10 +106,10 @@ button,
   -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
   -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-  background-color: ##CEF2D7;
+  background-color: #fcfcfc;
   border-radius: 6px;
   border: 0;
-  color: #ffffff;
+  color: #A1A1E1;
   cursor: pointer;
   display: inline-block;
   font-weight: 700;
@@ -145,3 +152,7 @@ button,
       padding: 0; } }
 
 
+button:hover{
+    background-color: #A1A1E1;
+    color: #fcfcfc;
+}

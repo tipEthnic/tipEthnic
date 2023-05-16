@@ -6,6 +6,7 @@ const maginot_check = document.getElementById("maginot").value;
 const calBtn = document.getElementById("Delivery-fee-Calculation");
 const navigationMap = document.getElementById("map_div");
 
+
 senderBtn.addEventListener('click',() => {
 	window.open("/assets/html/sender_address_popup.html",
 				"주소 받아오기",
@@ -17,6 +18,11 @@ receiverBtn.addEventListener('click',()=>{
 	"주소 받아오기",
 				"width=800, height=500, left=100, top=50");
 });
+
+function send_maginot(){
+    var maginot = document.getElementById('maginot').value;
+    console.log(maginot);
+}
 
 calBtn.addEventListener('click', function() {
 	if (maginot_check){
