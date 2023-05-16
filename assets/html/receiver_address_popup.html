@@ -5,18 +5,15 @@
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no"/>
-        <meta name="description" content="가게명">
+        <meta name="description" content="배달 받을 장소.">
         <link rel="stylesheet" href="/assets/css/map.css">
-        <link rel="stylesheet" href="/assets/css/popup.css">
     </head>
     <body>
         <div class="css-search">
             <!-- Address Form -->
-            <img src="../images/gold-d.png" id="img-search" alt="senderIcon">
+            <img src="/assets/images/silver-d.png" id="img-search">
             <form onsubmit="searchPlaces(); return false;">
-
                 <input type="text" id="keyword" value="">
-
                 <button type="submit" id="receiver_btn">검색</button>
             </form>
         </div>
@@ -31,10 +28,10 @@
             <div id="map" class="map" style="display: block;"></div>
         </div>
         <div id="result"></div>
+
         <script
             type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d5a0cfc898b4333b701a26737da1fde7&libraries=services"></script>
-        <script type="text/javascript" src="../js/sender.js"></script>
-
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=56bd209213d34625119079ed35a488b0&libraries=services"></script>
+        <script type="text/javascript" src="/assets/js/receiver.js"></script>
     </body>
 </html>
