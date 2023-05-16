@@ -13,7 +13,6 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var ps = new kakao.maps.services.Places();
 
 
-
 let status = 0;
 function searchPlaces() {
     status++;
@@ -25,10 +24,11 @@ function searchPlaces() {
         alert('키워드를 입력해주세요!');
         return false;
     }
+
     if(status === 1 ){
         console.log("검색");
         ps.keywordSearch(keyword, placesSearchCB, {
-            size : 7
+            size : 5
         });
         status = 0;
     }
