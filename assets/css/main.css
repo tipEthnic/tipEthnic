@@ -1,7 +1,5 @@
 @import url('./reset.css');
 /* @import url('./button.css'); */
-@import url("https://fontss.googleapis.com/css?family=Roboto:400,700");
-
 
 body{
     min-height: 100vh;
@@ -10,9 +8,13 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-    margin: 0 auto;
+    margin: 0 auto;;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
 .container{
     width: 100%;
 }
@@ -21,22 +23,21 @@ body{
     display: block;
 }
 
-
-
 header{
     width: 100%;
     color: #E5E0FF;
     text-align: center;
-    margin-top: 58px;
+    padding-top: 98px;
 }
 
 .explain {
     padding : 10px 0;
+    font-weight: 600;
 }
 
 section{
 text-align: center;
-margin: 30px 0;
+margin: 36px 0;
 }
 
 
@@ -53,16 +54,17 @@ margin: 30px 0;
 
 .inputName{
     justify-self: end;
+    font-weight: bold;
 }
 
 .input_field{
 width: 250px;
 height: 32px;
 font-size: 15px;
-border: 1px solid white;
+border: 1px solid #fcfcfc;
 border-radius: 5px;
 outline: none;
-background: transparent;
+background: #fcfcfc;
 /* background-color: rgb(233, 233, 233); */
 }
 
@@ -70,7 +72,7 @@ background: transparent;
     justify-self: start;
 }
 .receiverBtn{
-margin-right: 10px;
+    margin-right: 10px;
 }
 
 .distance{
@@ -82,66 +84,13 @@ margin-right: 10px;
 }
 
 .resultInfo {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
+#result p{
+    padding-top: 10px;
+    font-weight: bold;
+}
 
-
-/* Button */
-input[type="button"],
-button,
-.button {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-  -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-  background-color: ##CEF2D7;
-  border-radius: 6px;
-  border: 0;
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 700;
-  font-size: 1em;
-  height: 2em;
-  line-height: 1.75em;
-  text-align: center;
-  text-decoration: none;
-  white-space: nowrap; }
-  /* input[type="submit"]:hover,
-  input[type="reset"]:hover,
-  input[type="button"]:hover,
-  button:hover,
-  .button:hover {
-    background-color: #dddddd; }
-  input[type="submit"]:active,
-  input[type="reset"]:active,
-  input[type="button"]:active,
-  button:active,
-  .button:active {
-    background-color: #a1a1a1; }
-  input[type="submit"].disabled, input[type="submit"]:disabled,
-  input[type="reset"].disabled,
-  input[type="reset"]:disabled,
-  input[type="button"].disabled,
-  input[type="button"]:disabled,
-  button.disabled,
-  button:disabled,
-  .button.disabled,
-  .button:disabled {
-    opacity: 0.5; } */
-  @media screen and (max-width: 480px) {
-    input[type="submit"],
-    input[type="reset"],
-    input[type="button"],
-    button,
-    .button {
-      width : 4em;
-      height: 2em;
-      padding: 0; } }
 
 

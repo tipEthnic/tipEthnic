@@ -6,29 +6,31 @@
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no"/>
         <meta name="description" content="가게명">
+        <link rel="stylesheet" href="../css/reset.css">
         <link rel="stylesheet" href="/assets/css/map.css">
+        <link rel="stylesheet" href="../css/button.css">
     </head>
     <body>
-        <div class="css-search">
-            <!-- Address Form -->
-            <img src="/assets/images/gold-d.png" id="img-search">
-
-            <form onsubmit="searchPlaces(); return false;">
-                <input type="text" id="keyword" value="" >
-                <button type="submit" id="receiver_btn">검색</button>
-            </form>
-        </div>
-        <hr>
-
-        <div class="mainwrapper">
-            <div class="mainwrapper_content">
-                <ul class="js-placeWrapper css-placewrapper"></ul>
-                <div id="pagination"></div>
+        <div class="contents-Container">
+            <div class="css-search">
+                <!-- Address Form -->
+                <form onsubmit="searchPlaces(); return false;">
+                    <input type="text" id="keyword" value="" placeholder="동근이숯불두마리치킨 제주서귀포점">
+                    <button type="submit" id="receiver_btn">검색</button>
+                </form>
             </div>
 
-            <div id="map" class="map" style="display: block;"></div>
+
+            <div class="mainWrapper">
+                <div class="mainwrapper_content">
+                    <ul class="js-placeWrapper css-placewrapper"></ul>
+                    <div id="pagination"></div>
+                </div>
+
+                <div id="map" class="map" style="display: block;"></div>
+            </div>
+            <div id="result"></div>
         </div>
-        <div id="result"></div>
         <script
             type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=56bd209213d34625119079ed35a488b0&libraries=services"></script>

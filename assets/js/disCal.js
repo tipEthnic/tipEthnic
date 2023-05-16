@@ -11,37 +11,26 @@ var resultdrawArr = [];
 var resultMarkerArr = [];
 
 
-function send_maginot(){
-    var maginot = document.getElementById('maginot').value;
-    console.log(maginot);
-}
-
-const calBtn = document.querySelector(".calBtn");
-const navigationMap = document.getElementById("map_div");
-
-calBtn.addEventListener("click", ()=>{
-    console.log("조회버튼 click");
-})
-
-function now_map(){
+function setMap(){
     map = new Tmapv2.Map("map_div", {
         center : new Tmapv2.LatLng(parseFloat(localStorage.getItem('coords_lat')), parseFloat(localStorage.getItem('coords_lon'))),
         width : "100%",
-        height : "400px",
+        height : "500px",
         zoom : 13,
         zoomControl : true,
         scrollwheel : true
     });
 }
 
-
-
 // 1. 지도 띄우기
-
 function default_map(){
-   map.setCenter(new Tmapv2.LatLng(parseFloat(localStorage.getItem('receiver_latitude_y')), parseFloat(localStorage.getItem('receiver_longitude_x'))));
-   map.setZoom(12);
-   
+
+    // 지도 초기 설정
+    setMap();
+
+    map.setCenter(new Tmapv2.LatLng(parseFloat(localStorage.getItem('receiver_latitude_y')), parseFloat(localStorage.getItem('receiver_longitude_x'))));
+    map.setZoom(13);
+    
 
     // 2. 시작, 도착 심볼찍기
     // 시작
@@ -99,26 +88,22 @@ marker_e = new Tmapv2.Marker(
 
                                         var resultData = response.features;
 
+                                        console.log(resultData[0].properties.totalDistance )
+                                                     
+                                        var tDistance = (resultData[0].properties.totalDistance / 1000).toFixed(1) 
 
-
-                                        var tDistance = "총 거리 : "
-                                            + (resultData[0].properties.totalDistance / 1000)
-                                                .toFixed(1) + "km,";
-                                        var tmoney = " 예상 추가 배달비 : "
-                                            + ((resultData[0].properties.totalDistance / 1000)
-                                            .toFixed(1)-maginot.value)*1000+"원";
-                                        if ((resultData[0].properties.totalDistance / 1000)
-                                            .toFixed(1) < maginot.value) {
-                                            tmoney = maginot.value + "km 이내 입니다.";
-                                        }
-                                        console.log(maginot.value)
-                                        var result = "<p>" + tDistance + "<br><b>" + tmoney + "</b></p>";
-
-
-
-                                        $("#result").html(
-                                            result
-                                        );
+                                        let result = ""
+                                        if (tDistance >= 2.0){
+                                            let tMoney = (tDistance-2.0)*1000 
+                                            result = "<p>" + "총 거리 : " + tDistance+ "km" + "</p>";
+                                            result += "<p>예상 추가 배달비 : " + tMoney + "원</p>";
+                                        } else {
+                                            result = "<p>" + "총 거리 : " + tDistance+ "km </p>"
+                                            result += "<p> 추가 배달비가 발생하지 않습니다. </p>"
+                                        }               
+                        
+                                        const resultContainer = document.querySelector("#result");
+                                        resultContainer.innerHTML = result 
 
                                         //교통정보 표출 옵션값을 체크
                                         if (trafficInfochk == "Y") {
