@@ -6,9 +6,10 @@
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no"/>
         <link rel="stylesheet" href="./assets/css/main.css">
+        <!-- <link rel="stylesheet" href="./assets/css/map.css"> -->
     </head>
 
-    <body onload="now_map();" >
+    <body>
         <div class="container ">
             <header>
                 <img
@@ -30,13 +31,13 @@
                 <div class="input_wrapper">
                     <div class="inputName"><label for="sender">가게</label></div>
                     <input class="input_field sender_input" type="text" id="sender" readonly="readonly" >
-                    <div class="inputBtn"><button type="button" class="senderBtn btn btn-primary" onclick="javascript:goPopup();">검색</button></div>
+                    <div class="inputBtn"><button type="button" class="senderBtn btn btn-primary">검색</button></div>
 
                     <div class="inputName"><label for="receiver">배달 장소</label></div>
                     <input class="input_field receiver_input" type="text" id="receiver" readonly="readonly" >
                     <div class="inputBtn">
-                        <button class="receiverBtn" type="button" onclick="javascript:goPopup2();">검색</button>
-                        <button type="button" class="nowBtn" id="setnow">현위치</button>
+                        <button class="receiverBtn" type="button">검색</button>
+                        <button type="button" class="nowBtn" id="nowBtn">현위치</button>
                     </div>
                     
                 </div>
@@ -69,9 +70,6 @@
         <script src="/assets/js/main.js"></script>
         <script src="/assets/js/disCal.js"></script>
         <script src="/assets/js/now.js"></script>
-        <script
-            type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=56bd209213d34625119079ed35a488b0"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script
             src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxd89e57a2e4c84165b7661e4884dc603d"></script>
