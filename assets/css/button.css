@@ -1,0 +1,60 @@
+/* Button */
+button{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  background-color: #fcfcfc;
+  border-radius: 6px;
+  border: 0;
+  color: #A1A1E1;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 1em;
+  height: 2em;
+  line-height: 1.75em;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap; }
+  /* input[type="submit"]:hover,
+  input[type="reset"]:hover,
+  input[type="button"]:hover,
+  button:hover,
+  .button:hover {
+    background-color: #dddddd; }
+  input[type="submit"]:active,
+  input[type="reset"]:active,
+  input[type="button"]:active,
+  button:active,
+  .button:active {
+    background-color: #a1a1a1; }
+  input[type="submit"].disabled, input[type="submit"]:disabled,
+  input[type="reset"].disabled,
+  input[type="reset"]:disabled,
+  input[type="button"].disabled,
+  input[type="button"]:disabled,
+  button.disabled,
+  button:disabled,
+  .button.disabled,
+  .button:disabled {
+    opacity: 0.5; } */
+  @media screen and (max-width: 480px) {
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"],
+    button,
+    .button {
+      width : 4em;
+      height: 2em;
+      padding: 0; } }
+
+
+button:hover{
+    background-color: #A1A1E1;
+    color: #fcfcfc;
+}
