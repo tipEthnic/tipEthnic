@@ -1,8 +1,10 @@
 ### Fix List
 
+- 반응형 추가
+
 [메인페이지]
-- 지도 display none -> block
-- 버튼, input style 수정
+- ~~지도 display none -> block~~
+- ~~버튼, input style 수정~~
 
 [팝업페이지]
 - 전체 스타일 통일, 정렬
