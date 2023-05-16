@@ -7,16 +7,14 @@
             content="width=device-width, initial-scale=1, user-scalable=no"/>
         <meta name="description" content="가게명">
         <link rel="stylesheet" href="/assets/css/map.css">
-        <link rel="stylesheet" href="/assets/css/popup.css">
     </head>
     <body>
         <div class="css-search">
             <!-- Address Form -->
             <img src="/assets/images/gold-d.png" id="img-search">
+
             <form onsubmit="searchPlaces(); return false;">
-
-                <input type="text" id="keyword" value="">
-
+                <input type="text" id="keyword" value="" >
                 <button type="submit" id="receiver_btn">검색</button>
             </form>
         </div>
@@ -24,7 +22,7 @@
 
         <div class="mainwrapper">
             <div class="mainwrapper_content">
-                <ul class="js-placewrapper css-placewrapper"></ul>
+                <ul class="js-placeWrapper css-placewrapper"></ul>
                 <div id="pagination"></div>
             </div>
 
@@ -33,7 +31,7 @@
         <div id="result"></div>
         <script
             type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d5a0cfc898b4333b701a26737da1fde7&libraries=services"></script>
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=56bd209213d34625119079ed35a488b0&libraries=services"></script>
         <script type="text/javascript" src="/assets/js/sender.js"></script>
 
     </body>
